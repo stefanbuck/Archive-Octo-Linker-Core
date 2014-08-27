@@ -1,0 +1,43 @@
+{
+  "name": "github-linker-core",
+  "description": "The GitHub Linker core",
+  "version": "0.0.0",
+  "homepage": "https://github.com/stefanbuck/github-linker",
+  "bugs": "https://github.com/stefanbuck/github-linker-core/issues",
+  "license": "MIT",
+  "main": "index.js",
+  "author": {
+    "name": "Stefan Buck",
+    "email": "dev@stefanbuck.com",
+    "url": "http://stefanbuck.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stefanbuck/github-linker-core"
+  },
+  "keywords": [],
+  "dependencies": {
+    "debug": "1.0.4",
+    "jquery": "^2.1.1",
+    "lodash": "2.4.1"
+  },
+  "devDependencies": {
+    "coveralls": "^2.10.0",
+    "gulp": "^3.6.2",
+    "gulp-bump": "^0.1.8",
+    "gulp-istanbul": "^0.2.0",
+    "gulp-jscs": "^0.4.2",
+    "gulp-jshint": "^1.5.5",
+    "gulp-load-plugins": "^0.5.1",
+    "gulp-mocha": "^0.4.1",
+    "gulp-plumber": "^0.6.2",
+    "gulp-util": "2.2.16",
+    "jshint-stylish": "^0.2.0",
+    "should": "^3.3.1",
+    "jsdom": "^1.0.0-pre.3"
+  },
+  "scripts": {
+    "coveralls": "gulp test && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "test": "gulp test"
+  }
+}
