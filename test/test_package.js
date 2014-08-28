@@ -14,6 +14,13 @@ describe('githubLinkerCore', function() {
   beforeEach(function(done) {
     var file = path.resolve(__dirname, 'fixtures/package.html');
     var html = fs.readFileSync(file, 'utf-8');
+    var options = {
+      dictionary: {
+        npm: {
+          'lodash': 'https://github.com/lodash/lodash'
+        }
+      }
+    };
 
     $ = result = null;
 
@@ -23,8 +30,8 @@ describe('githubLinkerCore', function() {
       }
       $ = require('jquery')(window);
 
-      var url = 'https://github.com/stefanbuck/playground-repo/blob/master/package.json';
-      githubLinkerCore($, url, function(err, _result) {
+      var link = 'https://github.com/stefanbuck/playground-repo/blob/master/package.json';
+      githubLinkerCore($, link, options, function(err, _result) {
         if (err) {
           throw err;
         }
@@ -49,31 +56,57 @@ describe('githubLinkerCore', function() {
     });
   });
 
-  it('url Modernizr/Modernizr', function() {
+  it('link https://github.com/lodash/lodash', function() {
+    var item = _.findWhere(result, {
+      name: 'lodash'
+    });
+
+    (item.link === null).should.equal(false);
+    item.link.should.equal('https://github.com/lodash/lodash');
+  });
+
+  it('link https://www.npmjs.org/package/request', function() {
+    var item = _.findWhere(result, {
+      name: 'request'
+    });
+
+    (item.link === null).should.equal(false);
+    item.link.should.equal('https://www.npmjs.org/package/request');
+  });
+
+  it('link https://github.com/Modernizr/Modernizr', function() {
     var item = _.findWhere(result, {
       name: 'modernizr'
     });
 
-    (item.url === null).should.equal(false);
-    item.url.should.equal('https://github.com/Modernizr/Modernizr');
+    (item.link === null).should.equal(false);
+    item.link.should.equal('https://github.com/Modernizr/Modernizr');
   });
 
-  it('url jashkenas/backbone#master', function() {
+  it('link https://github.com/jashkenas/backbone/tree/master', function() {
     var item = _.findWhere(result, {
       name: 'backbone'
     });
 
-    (item.url === null).should.equal(false);
-    item.url.should.equal('https://github.com/jashkenas/backbone/tree/master');
+    (item.link === null).should.equal(false);
+    item.link.should.equal('https://github.com/jashkenas/backbone/tree/master');
   });
 
-  it('url jquery/jquery#1.x-master', function() {
+  it('link https://github.com/jquery/jquery/tree/1.x-master', function() {
     var item = _.findWhere(result, {
       name: 'jquery'
     });
 
-    (item.url === null).should.equal(false);
-    item.url.should.equal('https://github.com/jquery/jquery/tree/1.x-master');
+    (item.link === null).should.equal(false);
+    item.link.should.equal('https://github.com/jquery/jquery/tree/1.x-master');
   });
 
+  it('link https://www.npmjs.org/package/unknown-package-name', function() {
+    var item = _.findWhere(result, {
+      name: 'unknown-package-name'
+    });
+
+    (item.link === null).should.equal(false);
+    item.link.should.equal('https://www.npmjs.org/package/unknown-package-name');
+  });
 });
