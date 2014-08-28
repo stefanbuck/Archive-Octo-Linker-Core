@@ -1,0 +1,41 @@
+{
+    "name": "playground-repo",
+    "description": "My personal playground",
+    "version": "0.0.1",
+    "homepage": "https://github.com/stefanbuck/playground-repo",
+    "bugs": "https://github.com/stefanbuck/playground-repo/issues",
+    "license": "MIT",
+    "main": "index.js",
+    "author": {
+        "name": "Stefan Buck",
+        "email": "dev@stefanbuck.com",
+        "url": "http://stefanbuck.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/stefanbuck/playground-repo"
+    },
+    "keywords": [],
+    "dependencies": {
+        "lodash": "2.4.1",
+        "request": "^2.40.0",
+        "modernizr": "Modernizr/Modernizr",
+        "backbone": "jashkenas/backbone#master",
+        "jquery": "jquery/jquery#1.x-master",
+        "unknown-package-name": "latest"
+    },
+    "devDependencies": {
+        "chai": "^1.9.1",
+        "gulp": "^3.6.2"
+    },
+    "optionalDependencies": {
+        "should": "^3.3.1"
+    },
+    "peerDependencies": {
+        "yo": ">=1.0.0"
+    },
+    "scripts": {
+        "coveralls": "gulp test && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+        "test": "gulp test"
+    }
+}

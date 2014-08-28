@@ -1,7 +1,7 @@
 # github-linker-core 
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-url]][daviddm-image] [![Coverage Status][coveralls-image]][coveralls-url]
 
-| The [GitHub-Linker](https://github.com/stefanbuck/github-linker) core
+> The [GitHub-Linker](https://github.com/stefanbuck/github-linker) core
 
 
 ## License
