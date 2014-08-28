@@ -55,6 +55,10 @@ describe('package.json', function() {
       });
     });
 
+    it('check link replacement', function() {
+      $('a.github-linker').length.should.equal(10);
+    });
+
     it('link https://github.com/lodash/lodash', function() {
       var item = _.findWhere(result, {
         name: 'lodash'
