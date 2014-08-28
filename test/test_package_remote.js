@@ -14,7 +14,7 @@ describe('package.json', function() {
     var $, result;
     var url = 'https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/package.json';
 
-    beforeEach(function(done) {
+    before(function(done) {
       $ = result = null;
       var options = {
         dictionary: {

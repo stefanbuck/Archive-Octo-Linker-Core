@@ -14,7 +14,7 @@ describe('package.json', function() {
     var url = 'https://github.com/stefanbuck/playground-repo/blob/master/package.json';
     var file = path.resolve(__dirname, 'fixtures/package.html');
 
-    beforeEach(function(done) {
+    before(function(done) {
       $ = result = null;
       var html = fs.readFileSync(file, 'utf-8');
       var options = {
