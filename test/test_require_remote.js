@@ -1,8 +1,6 @@
 'use strict';
 
 var githubLinkerCore = require('../');
-var fs = require('fs');
-var path = require('path');
 var assert = require('should');
 var _ = require('lodash');
 var env = require('jsdom').env;
@@ -12,7 +10,6 @@ describe('require.js', function() {
   describe('local', function() {
     var $, result;
     var url = 'https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/require.js';
-    var file = path.resolve(__dirname, 'fixtures/require.html');
 
     before(function(done) {
       $ = result = null;
