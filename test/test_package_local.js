@@ -11,7 +11,7 @@ describe('package.json', function() {
 
   describe('local', function() {
     var $, result;
-    var url = 'https://github.com/stefanbuck/playground-repo/blob/master/package.json';
+    var url = 'https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/package.json';
     var file = path.resolve(__dirname, 'fixtures/package.html');
 
     before(function(done) {

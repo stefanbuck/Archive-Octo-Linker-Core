@@ -10,6 +10,7 @@
 
 var _ = require('lodash');
 var pkg = require('./lib/package');
+var reqr = require('./lib/require');
 
 var getType = function(url) {
 
@@ -36,5 +37,9 @@ module.exports = function($, url, options, cb) {
     bower: require('./lib/dictionary/bower.js')
   };
 
-  pkg($, type, dictionary, cb);
+  if (type === 'npm' || type === 'bower') {
+    pkg($, type, dictionary, cb);
+  } else if (type === 'js' || type === 'coffee') {
+    reqr($, type, url, dictionary.npm, cb);
+  }
 };
