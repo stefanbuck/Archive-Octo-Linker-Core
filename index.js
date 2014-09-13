@@ -29,17 +29,13 @@ var getType = function(url) {
   });
 };
 
-module.exports = function($, url, options, cb) {
+module.exports = function($, url, cb) {
 
   var type = getType(url);
-  var dictionary = options.dictionary || {
-    npm: require('./lib/dictionary/npm.js'),
-    bower: require('./lib/dictionary/bower.js')
-  };
 
   if (type === 'npm' || type === 'bower') {
-    pkg($, type, dictionary, cb);
+    pkg($, type, cb);
   } else if (type === 'js' || type === 'coffee') {
-    reqr($, type, url, dictionary.npm, cb);
+    reqr($, type, url, cb);
   }
 };

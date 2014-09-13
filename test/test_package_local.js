@@ -17,13 +17,6 @@ describe('package.json', function() {
     before(function(done) {
       $ = result = null;
       var html = fs.readFileSync(file, 'utf-8');
-      var options = {
-        dictionary: {
-          npm: {
-            'lodash': 'https://github.com/lodash/lodash'
-          }
-        }
-      };
 
       env(html, function(err, window) {
         if (err) {
@@ -31,7 +24,7 @@ describe('package.json', function() {
         }
         $ = require('jquery')(window);
 
-        githubLinkerCore($, url, options, function(err, _result) {
+        githubLinkerCore($, url, function(err, _result) {
           if (err) {
             throw err;
           }

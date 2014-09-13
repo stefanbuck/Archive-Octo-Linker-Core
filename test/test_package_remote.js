@@ -16,20 +16,13 @@ describe('package.json', function() {
 
     before(function(done) {
       $ = result = null;
-      var options = {
-        dictionary: {
-          npm: {
-            'lodash': 'https://github.com/lodash/lodash'
-          }
-        }
-      };
 
       env(url, function(err, window) {
         if (err) {
           return done(err);
         }
         $ = require('jquery')(window);
-        githubLinkerCore($, url, options, function(err, _result) {
+        githubLinkerCore($, url, function(err, _result) {
           if (err) {
             throw err;
           }
