@@ -13,8 +13,8 @@ describe('manifest', function() {
 
     describe('local', function() {
       var $, result;
-      var url = 'https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/manifest/package.json';
-      var file = path.resolve(__dirname, 'fixtures/manifest/package.json.html');
+      var url = 'https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/package.json';
+      var file = path.resolve(__dirname, 'fixtures/package.json.html');
 
       before(function(done) {
         $ = result = null;

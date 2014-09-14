@@ -14,7 +14,7 @@ describe('manifest', function() {
       this.timeout(4000);
 
       var $, result;
-      var url = 'https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/manifest/package.json';
+      var url = 'https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/package.json';
 
       before(function(done) {
         $ = result = null;

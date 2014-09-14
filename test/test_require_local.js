@@ -12,7 +12,7 @@ describe('require.js', function() {
   describe('local', function() {
     var $, result;
     var url = 'https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/require.js';
-    var file = path.resolve(__dirname, 'fixtures/require.html');
+    var file = path.resolve(__dirname, 'fixtures/require.js.html');
 
     before(function(done) {
       $ = result = null;
