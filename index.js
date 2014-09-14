@@ -9,7 +9,7 @@
 'use strict';
 
 var _ = require('lodash');
-var pkg = require('./lib/package');
+var manifest = require('./lib/manifest');
 var reqr = require('./lib/require');
 
 var getType = function(url) {
@@ -34,7 +34,7 @@ module.exports = function($, url, cb) {
   var type = getType(url);
 
   if (type === 'npm' || type === 'bower') {
-    pkg($, type, cb);
+    manifest($, type, cb);
   } else if (type === 'js' || type === 'coffee') {
     reqr($, type, url, cb);
   }
