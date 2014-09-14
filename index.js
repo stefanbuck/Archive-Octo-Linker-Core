@@ -8,34 +8,15 @@
 
 'use strict';
 
-var _ = require('lodash');
+var utils = require('./lib/utils');
 var manifest = require('./lib/manifest');
 var reqr = require('./lib/require');
 
-var getType = function(url) {
-
-  var urlContains = function(indicator) {
-    return url.indexOf(indicator) === url.length - indicator.length;
-  };
-  var lookup = {
-    '/package.json': 'npm',
-    '/bower.json': 'bower',
-    '.js': 'js',
-    '.coffee': 'coffee'
-  };
-
-  return _.find(lookup, function(type, urlFragment) {
-    return urlContains(urlFragment);
-  });
-};
-
 module.exports = function($, url, cb) {
 
-  var type = getType(url);
-
-  if (type === 'npm' || type === 'bower') {
-    manifest($, type, cb);
-  } else if (type === 'js' || type === 'coffee') {
-    reqr($, type, url, cb);
+  if (utils.manifestType(url)) {
+    manifest($, url, cb);
+  } else if (utils.requireType(url)) {
+    reqr($, url, cb);
   }
 };
