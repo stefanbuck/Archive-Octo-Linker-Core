@@ -11,6 +11,7 @@
   "boss": true,
   "eqnull": true,
   "node": true,
+  "expr": true,
   "globals": {
     "describe"   : false,
     "it"         : false,

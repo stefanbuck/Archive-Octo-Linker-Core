@@ -93,7 +93,8 @@ describe('require.js', function() {
       });
 
       (item.link === null).should.equal(false);
-      item.link.should.equal('resolve:/stefanbuck/github-linker-core/blob/master/test/fixtures/file-or-folder');
+      item.resolveLink.should.be.ok;
+      item.link.should.equal('/stefanbuck/github-linker-core/blob/master/test/fixtures/file-or-folder');
     });
 
     it('../file.js', function() {
@@ -120,7 +121,8 @@ describe('require.js', function() {
       });
 
       (item.link === null).should.equal(false);
-      item.link.should.equal('resolve:/stefanbuck/github-linker-core/blob/master/test/file-or-folder');
+      item.resolveLink.should.be.ok;
+      item.link.should.equal('/stefanbuck/github-linker-core/blob/master/test/file-or-folder');
     });
 
     it('../../file.js', function() {
@@ -147,7 +149,8 @@ describe('require.js', function() {
       });
 
       (item.link === null).should.equal(false);
-      item.link.should.equal('resolve:/stefanbuck/github-linker-core/blob/master/file-or-folder');
+      item.resolveLink.should.be.ok;
+      item.link.should.equal('/stefanbuck/github-linker-core/blob/master/file-or-folder');
     });
 
     it('./', function() {
@@ -156,7 +159,8 @@ describe('require.js', function() {
       });
 
       (item.link === null).should.equal(false);
-      item.link.should.equal('resolve:/stefanbuck/github-linker-core/blob/master/test/fixtures');
+      item.resolveLink.should.be.ok;
+      item.link.should.equal('/stefanbuck/github-linker-core/blob/master/test/fixtures');
     });
 
     it('..', function() {
@@ -165,7 +169,8 @@ describe('require.js', function() {
       });
 
       (item.link === null).should.equal(false);
-      item.link.should.equal('resolve:/stefanbuck/github-linker-core/blob/master/test');
+      item.resolveLink.should.be.ok;
+      item.link.should.equal('/stefanbuck/github-linker-core/blob/master/test');
     });
 
     it('../', function() {
@@ -174,7 +179,8 @@ describe('require.js', function() {
       });
 
       (item.link === null).should.equal(false);
-      item.link.should.equal('resolve:/stefanbuck/github-linker-core/blob/master/test');
+      item.resolveLink.should.be.ok;
+      item.link.should.equal('/stefanbuck/github-linker-core/blob/master/test');
     });
 
     it('../..', function() {
@@ -183,7 +189,8 @@ describe('require.js', function() {
       });
 
       (item.link === null).should.equal(false);
-      item.link.should.equal('resolve:/stefanbuck/github-linker-core/blob/master');
+      item.resolveLink.should.be.ok;
+      item.link.should.equal('/stefanbuck/github-linker-core/blob/master');
     });
 
     it('../../', function() {
@@ -192,7 +199,8 @@ describe('require.js', function() {
       });
 
       (item.link === null).should.equal(false);
-      item.link.should.equal('resolve:/stefanbuck/github-linker-core/blob/master');
+      item.resolveLink.should.be.ok;
+      item.link.should.equal('/stefanbuck/github-linker-core/blob/master');
     });
 
     it.skip('.', function() {
