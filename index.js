@@ -14,6 +14,10 @@ var reqr = require('./lib/require');
 
 module.exports = function($, url, cb) {
 
+  if ($('.github-linker').length > 0) {
+    return cb(null);
+  }
+
   if (utils.manifestType(url)) {
     manifest($, url, cb);
   } else if (utils.requireType(url)) {
