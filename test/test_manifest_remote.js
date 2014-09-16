@@ -51,7 +51,7 @@ describe('manifest', function() {
       });
 
       it('check link replacement', function() {
-        $('a.github-linker').length.should.equal(10);
+        $('a.github-linker').length.should.equal(11);
       });
 
       it('link https://github.com/lodash/lodash', function() {
@@ -106,6 +106,12 @@ describe('manifest', function() {
 
         (item.link === null).should.equal(false);
         item.link.should.equal('https://www.npmjs.org/package/unknown-package-name');
+      });
+
+      it('entry file', function() {
+        var mainFile = $('span.nt:contains("main")').parent().find('.github-linker').attr('href');
+        (!!mainFile).should.equal(true);
+        mainFile.should.equal('index.js');
       });
     });
   });
