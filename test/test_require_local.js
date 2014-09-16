@@ -230,5 +230,13 @@ describe('require.js', function() {
       item.link.should.equal('tbd');
     });
 
+    it('resolve url', function() {
+      var item = _.findWhere(result, {
+        name: '../../file-or-folder'
+      });
+
+      item.el.trigger('click');
+    });
+
   });
 });
