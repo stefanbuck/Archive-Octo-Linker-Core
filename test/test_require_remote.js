@@ -30,7 +30,6 @@ describe('require.js', function() {
       });
     });
 
-
     it('found dependencies', function() {
 
       // TODO Evaluate why this doesn't work
