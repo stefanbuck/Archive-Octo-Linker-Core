@@ -1,0 +1,31 @@
+{
+    "name": "playground-repo",
+    "description": "My personal playground",
+    "version": "0.0.1",
+    "main": "index.js",
+    "license": "MIT",
+    "ignore": "",
+    "keywords": [],
+    "author": [
+      "Stefan Buck <dev@stefanbuck.com> (http://stefanbuck.com)"
+    ],
+    "homepage": "https://github.com/stefanbuck/playground-repo",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/stefanbuck/playground-repo"
+    },
+    "dependencies": {
+        "lodash": "2.4.1",
+        "modernizr": "Modernizr/Modernizr",
+        "backbone": "jashkenas/backbone#master",
+        "jquery": "jquery/jquery#1.x-master",
+        "unknown-package-name": "latest"
+    },
+    "devDependencies": {
+        "chai": "^1.9.1",
+        "should": "^3.3.1"
+    },
+    "resolutions": {
+        "lodash": "2.1.0"
+    }
+}
