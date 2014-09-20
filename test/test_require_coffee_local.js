@@ -49,6 +49,9 @@ describe('require.coffee', function() {
 
       (item.link === null).should.equal(false);
       item.link.should.equal('http://nodejs.org/api/path.html');
+
+      item.el.attr('href').should.equal('http://nodejs.org/api/path.html');
+      item.el.hasClass('tooltipped').should.be.false;
     });
 
     it('https://github.com/lodash/lodash', function() {
@@ -58,6 +61,9 @@ describe('require.coffee', function() {
 
       (item.link === null).should.equal(false);
       item.link.should.equal('https://github.com/lodash/lodash');
+
+      item.el.attr('href').should.equal('https://github.com/lodash/lodash');
+      item.el.hasClass('tooltipped').should.be.false;
     });
 
   });

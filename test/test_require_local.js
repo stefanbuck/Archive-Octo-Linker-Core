@@ -49,6 +49,9 @@ describe('require.js', function() {
 
       (item.link === null).should.equal(false);
       item.link.should.equal('http://nodejs.org/api/path.html');
+
+      item.el.attr('href').should.equal('http://nodejs.org/api/path.html');
+      item.el.hasClass('tooltipped').should.be.false;
     });
 
     it('https://github.com/lodash/lodash', function() {
@@ -58,6 +61,9 @@ describe('require.js', function() {
 
       (item.link === null).should.equal(false);
       item.link.should.equal('https://github.com/lodash/lodash');
+
+      item.el.attr('href').should.equal('https://github.com/lodash/lodash');
+      item.el.hasClass('tooltipped').should.be.false;
     });
 
     it('unknown-package-name', function() {
@@ -67,6 +73,9 @@ describe('require.js', function() {
 
       (item.link === null).should.equal(false);
       item.link.should.equal('https://www.npmjs.org/package/unknown-package-name');
+
+      item.el.data('href').should.equal('https://www.npmjs.org/package/unknown-package-name');
+      item.el.hasClass('tooltipped').should.be.false;
     });
 
     it('./file.js', function() {
@@ -76,6 +85,9 @@ describe('require.js', function() {
 
       (item.link === null).should.equal(false);
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/file.js');
+
+      item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/file.js');
+      item.el.hasClass('tooltipped').should.be.false;
     });
 
     it('./folder/file.js', function() {
@@ -85,6 +97,9 @@ describe('require.js', function() {
 
       (item.link === null).should.equal(false);
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/folder/file.js');
+
+      item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/folder/file.js');
+      item.el.hasClass('tooltipped').should.be.false;
     });
 
     it('./file-or-folder', function() {
@@ -95,6 +110,9 @@ describe('require.js', function() {
       (item.link === null).should.equal(false);
       item.resolveLink.should.be.ok;
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/file-or-folder');
+
+      item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/file-or-folder');
+      item.el.hasClass('tooltipped').should.be.false;
     });
 
     it('../file.js', function() {
@@ -104,6 +122,9 @@ describe('require.js', function() {
 
       (item.link === null).should.equal(false);
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/file.js');
+
+      item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/file.js');
+      item.el.hasClass('tooltipped').should.be.false;
     });
 
     it('../folder/file.js', function() {
@@ -113,6 +134,9 @@ describe('require.js', function() {
 
       (item.link === null).should.equal(false);
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/folder/file.js');
+
+      item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/folder/file.js');
+      item.el.hasClass('tooltipped').should.be.false;
     });
 
     it('../file-or-folder', function() {
@@ -123,6 +147,9 @@ describe('require.js', function() {
       (item.link === null).should.equal(false);
       item.resolveLink.should.be.ok;
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/file-or-folder');
+
+      item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/file-or-folder');
+      item.el.hasClass('tooltipped').should.be.false;
     });
 
     it('../../file.js', function() {
@@ -132,6 +159,9 @@ describe('require.js', function() {
 
       (item.link === null).should.equal(false);
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/file.js');
+
+      item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/file.js');
+      item.el.hasClass('tooltipped').should.be.false;
     });
 
     it('../../folder/file.js', function() {
@@ -141,6 +171,9 @@ describe('require.js', function() {
 
       (item.link === null).should.equal(false);
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/folder/file.js');
+
+      item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/folder/file.js');
+      item.el.hasClass('tooltipped').should.be.false;
     });
 
     it('../../file-or-folder', function() {
@@ -151,6 +184,9 @@ describe('require.js', function() {
       (item.link === null).should.equal(false);
       item.resolveLink.should.be.ok;
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/file-or-folder');
+
+      item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/file-or-folder');
+      item.el.hasClass('tooltipped').should.be.false;
     });
 
     it('./', function() {
@@ -161,6 +197,9 @@ describe('require.js', function() {
       (item.link === null).should.equal(false);
       item.resolveLink.should.be.ok;
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures');
+
+      item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures');
+      item.el.hasClass('tooltipped').should.be.false;
     });
 
     it('..', function() {
@@ -171,6 +210,9 @@ describe('require.js', function() {
       (item.link === null).should.equal(false);
       item.resolveLink.should.be.ok;
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test');
+
+      item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test');
+      item.el.hasClass('tooltipped').should.be.false;
     });
 
     it('../', function() {
@@ -181,6 +223,9 @@ describe('require.js', function() {
       (item.link === null).should.equal(false);
       item.resolveLink.should.be.ok;
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test');
+
+      item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test');
+      item.el.hasClass('tooltipped').should.be.false;
     });
 
     it('../..', function() {
@@ -191,6 +236,9 @@ describe('require.js', function() {
       (item.link === null).should.equal(false);
       item.resolveLink.should.be.ok;
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master');
+
+      item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master');
+      item.el.hasClass('tooltipped').should.be.false;
     });
 
     it('../../', function() {
@@ -201,6 +249,9 @@ describe('require.js', function() {
       (item.link === null).should.equal(false);
       item.resolveLink.should.be.ok;
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master');
+
+      item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master');
+      item.el.hasClass('tooltipped').should.be.false;
     });
 
     it.skip('.', function() {
@@ -210,6 +261,9 @@ describe('require.js', function() {
 
       (item.link === null).should.equal(false);
       item.link.should.equal('tbd');
+
+      item.el.data('href').should.equal('tbd');
+      item.el.hasClass('tooltipped').should.be.false;
     });
 
     it.skip('...', function() {
@@ -219,6 +273,9 @@ describe('require.js', function() {
 
       (item.link === null).should.equal(false);
       item.link.should.equal('tbd');
+
+      item.el.data('href').should.equal('tbd');
+      item.el.hasClass('tooltipped').should.be.false;
     });
 
     it.skip('/', function() {
@@ -228,6 +285,9 @@ describe('require.js', function() {
 
       (item.link === null).should.equal(false);
       item.link.should.equal('tbd');
+
+      item.el.data('href').should.equal('tbd');
+      item.el.hasClass('tooltipped').should.be.false;
     });
 
     it('resolve url', function() {

@@ -63,6 +63,9 @@ describe('manifest', function() {
 
         (item.link === null).should.equal(false);
         item.link.should.equal('https://github.com/lodash/lodash');
+
+      item.el.attr('href').should.equal('https://github.com/lodash/lodash');
+      item.el.hasClass('tooltipped').should.be.false;
       });
 
       it('link https://www.npmjs.org/package/request', function() {
@@ -72,6 +75,9 @@ describe('manifest', function() {
 
         (item.link === null).should.equal(false);
         item.link.should.equal('https://www.npmjs.org/package/request');
+
+      item.el.attr('href').should.equal('https://www.npmjs.org/package/request');
+      item.el.hasClass('tooltipped').should.be.false;
       });
 
       it('link https://github.com/Modernizr/Modernizr', function() {
@@ -81,6 +87,9 @@ describe('manifest', function() {
 
         (item.link === null).should.equal(false);
         item.link.should.equal('https://github.com/Modernizr/Modernizr');
+
+      item.el.attr('href').should.equal('https://github.com/Modernizr/Modernizr');
+      item.el.hasClass('tooltipped').should.be.false;
       });
 
       it('link https://github.com/jashkenas/backbone/tree/master', function() {
@@ -90,6 +99,9 @@ describe('manifest', function() {
 
         (item.link === null).should.equal(false);
         item.link.should.equal('https://github.com/jashkenas/backbone/tree/master');
+
+      item.el.attr('href').should.equal('https://github.com/jashkenas/backbone/tree/master');
+      item.el.hasClass('tooltipped').should.be.false;
       });
 
       it('link https://github.com/jquery/jquery/tree/1.x-master', function() {
@@ -99,6 +111,9 @@ describe('manifest', function() {
 
         (item.link === null).should.equal(false);
         item.link.should.equal('https://github.com/jquery/jquery/tree/1.x-master');
+
+      item.el.attr('href').should.equal('https://github.com/jquery/jquery/tree/1.x-master');
+      item.el.hasClass('tooltipped').should.be.false;
       });
 
       it('link https://www.npmjs.org/package/unknown-package-name', function() {
@@ -108,6 +123,9 @@ describe('manifest', function() {
 
         (item.link === null).should.equal(false);
         item.link.should.equal('https://www.npmjs.org/package/unknown-package-name');
+
+      item.el.attr('href').should.equal('https://www.npmjs.org/package/unknown-package-name');
+      item.el.hasClass('tooltipped').should.be.false;
       });
 
       it('entry file', function() {
