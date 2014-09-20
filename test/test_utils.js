@@ -15,6 +15,10 @@ describe('utils', function() {
       utils.manifestType('https://github.com/stefanbuck/github-linker-core/blob/master/bower.json').should.equal('bower');
     });
 
+    it('composer.json', function() {
+      utils.manifestType('https://github.com/stefanbuck/github-linker-core/blob/master/composer.json').should.equal('composer');
+    });
+
     it('unknown.json', function() {
       (utils.manifestType('https://github.com/stefanbuck/github-linker-core/blob/master/unknown.json') === undefined).should.equal(true);
     });
