@@ -249,40 +249,30 @@ describe('require.js', function() {
       item.el.hasClass('tooltipped').should.be.false;
     });
 
-    it.skip('.', function() {
+    it('.', function() {
       var item = _.findWhere(result, {
         name: '.'
       });
-
-      (item.link === null).should.equal(false);
-      item.link.should.equal('tbd');
-
-      item.el.data('href').should.equal('tbd');
-      item.el.hasClass('tooltipped').should.be.false;
+      (item.link === null).should.equal(true);
+      item.el.hasClass('tooltipped').should.be.true;
     });
 
-    it.skip('...', function() {
+    it('...', function() {
       var item = _.findWhere(result, {
         name: '...'
       });
 
-      (item.link === null).should.equal(false);
-      item.link.should.equal('tbd');
-
-      item.el.data('href').should.equal('tbd');
-      item.el.hasClass('tooltipped').should.be.false;
+      (item.link === null).should.equal(true);
+      item.el.hasClass('tooltipped').should.be.true;
     });
 
-    it.skip('/', function() {
+    it('/', function() {
       var item = _.findWhere(result, {
         name: '/'
       });
 
-      (item.link === null).should.equal(false);
-      item.link.should.equal('tbd');
-
-      item.el.data('href').should.equal('tbd');
-      item.el.hasClass('tooltipped').should.be.false;
+      (item.link === null).should.equal(true);
+      item.el.hasClass('tooltipped').should.be.true;
     });
 
   });
