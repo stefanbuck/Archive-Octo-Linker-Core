@@ -39,6 +39,14 @@ describe('utils', function() {
     });
   });
 
+  describe('advanced urls', function() {
+
+    it('with line marker', function() {
+      utils.manifestType('https://github.com/stefanbuck/github-linker-core/blob/master/package.json#L1').should.equal('npm');
+      utils.requireType('https://github.com/stefanbuck/github-linker-core/blob/master/file.js#L1').should.equal('js');
+    });
+  });
+
   describe('stripQuotes', function() {
 
     it('lodash', function() {
