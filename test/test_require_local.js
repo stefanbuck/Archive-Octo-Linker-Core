@@ -37,9 +37,13 @@ describe('require.js', function() {
     it('found dependencies', function() {
 
       // TODO Evaluate why this doesn't work
-      // result.should.have.length(20);
+      // result.should.have.length(23);
 
-      result.length.should.equal(20);
+      result.length.should.equal(23);
+    });
+
+    it('check link replacement', function() {
+      $('a.github-linker').length.should.equal(18);
     });
 
     it('http://nodejs.org/api/path.html', function() {
@@ -72,6 +76,17 @@ describe('require.js', function() {
       item.link.should.equal('https://www.npmjs.org/package/unknown-package-name');
 
       item.el.data('href').should.equal('https://www.npmjs.org/package/unknown-package-name');
+      item.el.hasClass('tooltipped').should.be.false;
+    });
+
+    it('matthewmueller/uid', function() {
+      var item = _.findWhere(result, {
+        name: 'matthewmueller/uid'
+      });
+
+      item.link.should.equal('https://github.com/matthewmueller/uid');
+
+      item.el.attr('href').should.equal('https://github.com/matthewmueller/uid');
       item.el.hasClass('tooltipped').should.be.false;
     });
 
