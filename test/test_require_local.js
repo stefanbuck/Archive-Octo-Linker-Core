@@ -43,7 +43,7 @@ describe('require.js', function() {
     });
 
     it('check link replacement', function() {
-      $('a.github-linker').length.should.equal(18);
+      $('a.github-linker').length.should.equal(20);
     });
 
     it('http://nodejs.org/api/path.html', function() {
@@ -84,9 +84,34 @@ describe('require.js', function() {
         name: 'matthewmueller/uid'
       });
 
+      item.resolveLink.should.be.ok;
       item.link.should.equal('https://github.com/matthewmueller/uid');
 
-      item.el.attr('href').should.equal('https://github.com/matthewmueller/uid');
+      item.el.data('href').should.equal('https://github.com/matthewmueller/uid');
+      item.el.hasClass('tooltipped').should.be.false;
+    });
+
+    it('component/tip@master', function() {
+      var item = _.findWhere(result, {
+        name: 'component/tip@master'
+      });
+
+      item.resolveLink.should.be.ok;
+      item.link.should.equal('https://github.com/component/tip/tree/master');
+
+      item.el.data('href').should.equal('https://github.com/component/tip/tree/master');
+      item.el.hasClass('tooltipped').should.be.false;
+    });
+
+    it('yields/shortcuts@0.0.1:/index.js', function() {
+      var item = _.findWhere(result, {
+        name: 'yields/shortcuts@0.0.1:/index.js'
+      });
+
+      item.resolveLink.should.be.ok;
+      item.link.should.equal('https://github.com/yields/shortcuts/tree/0.0.1/index.js');
+
+      item.el.data('href').should.equal('https://github.com/yields/shortcuts/tree/0.0.1/index.js');
       item.el.hasClass('tooltipped').should.be.false;
     });
 

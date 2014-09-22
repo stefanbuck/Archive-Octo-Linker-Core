@@ -1,4 +1,4 @@
-var registries = require('github-linker-registries');
+var registries = require('github-linker-cache');
 
 before(function() {
   registries.npm = {
