@@ -43,7 +43,6 @@ describe('require.js', function() {
         name: 'path'
       });
 
-      (item.link === null).should.equal(false);
       item.link.should.equal('http://nodejs.org/api/path.html');
 
       item.el.attr('href').should.equal('http://nodejs.org/api/path.html');
@@ -55,7 +54,6 @@ describe('require.js', function() {
         name: 'lodash'
       });
 
-      (item.link === null).should.equal(false);
       item.link.should.equal('https://github.com/lodash/lodash');
 
       item.el.attr('href').should.equal('https://github.com/lodash/lodash');
@@ -67,7 +65,6 @@ describe('require.js', function() {
         name: 'unknown-package-name'
       });
 
-      (item.link === null).should.equal(false);
       item.link.should.equal('https://www.npmjs.org/package/unknown-package-name');
       item.el.data('href').should.equal('https://www.npmjs.org/package/unknown-package-name');
       item.el.hasClass('tooltipped').should.be.false;
@@ -78,7 +75,6 @@ describe('require.js', function() {
         name: './file.js'
       });
 
-      (item.link === null).should.equal(false);
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/file.js');
 
       item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/file.js');
@@ -90,7 +86,6 @@ describe('require.js', function() {
         name: './folder/file.js'
       });
 
-      (item.link === null).should.equal(false);
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/folder/file.js');
 
       item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/folder/file.js');
@@ -102,7 +97,6 @@ describe('require.js', function() {
         name: './file-or-folder'
       });
 
-      (item.link === null).should.equal(false);
       item.resolveLink.should.be.ok;
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/file-or-folder');
 
@@ -115,7 +109,6 @@ describe('require.js', function() {
         name: '../file.js'
       });
 
-      (item.link === null).should.equal(false);
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/file.js');
 
       item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/file.js');
@@ -127,7 +120,6 @@ describe('require.js', function() {
         name: '../folder/file.js'
       });
 
-      (item.link === null).should.equal(false);
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/folder/file.js');
 
       item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/folder/file.js');
@@ -139,7 +131,6 @@ describe('require.js', function() {
         name: '../file-or-folder'
       });
 
-      (item.link === null).should.equal(false);
       item.resolveLink.should.be.ok;
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/file-or-folder');
 
@@ -152,7 +143,6 @@ describe('require.js', function() {
         name: '../../file.js'
       });
 
-      (item.link === null).should.equal(false);
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/file.js');
 
       item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/file.js');
@@ -164,7 +154,6 @@ describe('require.js', function() {
         name: '../../folder/file.js'
       });
 
-      (item.link === null).should.equal(false);
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/folder/file.js');
 
       item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/folder/file.js');
@@ -176,7 +165,6 @@ describe('require.js', function() {
         name: '../../file-or-folder'
       });
 
-      (item.link === null).should.equal(false);
       item.resolveLink.should.be.ok;
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/file-or-folder');
 
@@ -189,7 +177,6 @@ describe('require.js', function() {
         name: './'
       });
 
-      (item.link === null).should.equal(false);
       item.resolveLink.should.be.ok;
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures');
 
@@ -202,7 +189,6 @@ describe('require.js', function() {
         name: '..'
       });
 
-      (item.link === null).should.equal(false);
       item.resolveLink.should.be.ok;
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test');
 
@@ -215,7 +201,6 @@ describe('require.js', function() {
         name: '../'
       });
 
-      (item.link === null).should.equal(false);
       item.resolveLink.should.be.ok;
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test');
 
@@ -228,7 +213,6 @@ describe('require.js', function() {
         name: '../..'
       });
 
-      (item.link === null).should.equal(false);
       item.resolveLink.should.be.ok;
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master');
 
@@ -241,7 +225,6 @@ describe('require.js', function() {
         name: '../../'
       });
 
-      (item.link === null).should.equal(false);
       item.resolveLink.should.be.ok;
       item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master');
 
@@ -253,7 +236,7 @@ describe('require.js', function() {
       var item = _.findWhere(result, {
         name: '.'
       });
-      (item.link === null).should.equal(true);
+      (item.link === '').should.equal(true);
       item.el.hasClass('tooltipped').should.be.true;
     });
 
@@ -262,7 +245,7 @@ describe('require.js', function() {
         name: '...'
       });
 
-      (item.link === null).should.equal(true);
+      (item.link === '').should.equal(true);
       item.el.hasClass('tooltipped').should.be.true;
     });
 
@@ -271,7 +254,7 @@ describe('require.js', function() {
         name: '/'
       });
 
-      (item.link === null).should.equal(true);
+      (item.link === '').should.equal(true);
       item.el.hasClass('tooltipped').should.be.true;
     });
 

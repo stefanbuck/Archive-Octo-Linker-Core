@@ -43,7 +43,6 @@ describe('require.coffee', function() {
         name: 'path'
       });
 
-      (item.link === null).should.equal(false);
       item.link.should.equal('http://nodejs.org/api/path.html');
 
       item.el.attr('href').should.equal('http://nodejs.org/api/path.html');
@@ -55,7 +54,6 @@ describe('require.coffee', function() {
         name: 'lodash'
       });
 
-      (item.link === null).should.equal(false);
       item.link.should.equal('https://github.com/lodash/lodash');
 
       item.el.attr('href').should.equal('https://github.com/lodash/lodash');

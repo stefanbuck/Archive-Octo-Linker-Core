@@ -62,7 +62,7 @@ describe('manifest', function() {
             name: 'php'
           });
 
-          (item.link === null).should.equal(true);
+          (item.link === '').should.equal(true);
           item.el.hasClass('tooltipped').should.be.true;
         });
 
@@ -83,7 +83,7 @@ describe('manifest', function() {
             name: 'unknown-package-name'
           });
 
-          (item.link === null).should.equal(true);
+          (item.link === '').should.equal(true);
           item.el.hasClass('tooltipped').should.be.true;
         });
       });
@@ -122,7 +122,7 @@ describe('manifest', function() {
             name: 'ext-openssl'
           });
 
-          (item.link === null).should.equal(true);
+          (item.link === '').should.equal(true);
           item.el.hasClass('tooltipped').should.be.true;
         });
 
