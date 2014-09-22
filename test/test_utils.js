@@ -1,49 +1,51 @@
 'use strict';
 
 var utils = require('../lib/utils');
+var manifest = require('../lib/manifest');
+var reqr = require('../lib/require');
 var assert = require('should');
 
 describe('utils', function() {
 
-  describe('manifestType', function() {
+  describe('manifest.supported', function() {
 
     it('package.json', function() {
-      utils.manifestType('https://github.com/stefanbuck/github-linker-core/blob/master/package.json').should.equal('npm');
+      manifest.supported('https://github.com/stefanbuck/github-linker-core/blob/master/package.json').should.equal(true);
     });
 
     it('bower.json', function() {
-      utils.manifestType('https://github.com/stefanbuck/github-linker-core/blob/master/bower.json').should.equal('bower');
+      manifest.supported('https://github.com/stefanbuck/github-linker-core/blob/master/bower.json').should.equal(true);
     });
 
     it('composer.json', function() {
-      utils.manifestType('https://github.com/stefanbuck/github-linker-core/blob/master/composer.json').should.equal('composer');
+      manifest.supported('https://github.com/stefanbuck/github-linker-core/blob/master/composer.json').should.equal(true);
     });
 
     it('unknown.json', function() {
-      (utils.manifestType('https://github.com/stefanbuck/github-linker-core/blob/master/unknown.json') === undefined).should.equal(true);
+      manifest.supported('https://github.com/stefanbuck/github-linker-core/blob/master/unknown.json').should.equal(false);
     });
   });
 
-  describe('requireType', function() {
+  describe('require.supported', function() {
 
     it('file.js', function() {
-      utils.requireType('https://github.com/stefanbuck/github-linker-core/blob/master/file.js').should.equal('js');
+      reqr.supported('https://github.com/stefanbuck/github-linker-core/blob/master/file.js').should.equal(true);
     });
 
     it('file.coffee', function() {
-      utils.requireType('https://github.com/stefanbuck/github-linker-core/blob/master/file.coffee').should.equal('coffee');
+      reqr.supported('https://github.com/stefanbuck/github-linker-core/blob/master/file.coffee').should.equal(true);
     });
 
     it('file.txt', function() {
-      (utils.requireType('https://github.com/stefanbuck/github-linker-core/blob/master/file.txt') === undefined).should.equal(true);
+      reqr.supported('https://github.com/stefanbuck/github-linker-core/blob/master/file.txt').should.equal(false);
     });
   });
 
   describe('advanced urls', function() {
 
     it('with line marker', function() {
-      utils.manifestType('https://github.com/stefanbuck/github-linker-core/blob/master/package.json#L1').should.equal('npm');
-      utils.requireType('https://github.com/stefanbuck/github-linker-core/blob/master/file.js#L1').should.equal('js');
+      manifest.supported('https://github.com/stefanbuck/github-linker-core/blob/master/package.json#L1').should.equal(true);
+      reqr.supported('https://github.com/stefanbuck/github-linker-core/blob/master/file.js#L1').should.equal(true);
     });
   });
 
