@@ -17,7 +17,7 @@
   },
   "keywords": [],
   "dependencies": {
-    "github-linker-cache": "^0.1.0",
+    "github-linker-cache": "^0.2.0",
     "github-linker-resolve": "^0.1.0",
     "jquery": "^2.1.1",
     "lodash": "2.4.1"
