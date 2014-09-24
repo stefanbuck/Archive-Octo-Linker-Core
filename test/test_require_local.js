@@ -109,9 +109,9 @@ describe('require.js', function() {
       });
 
       item.resolveLink.should.be.ok;
-      item.link.should.equal('https://github.com/yields/shortcuts/tree/0.0.1/index.js');
+      item.link.should.equal('https://github.com/yields/shortcuts/blob/0.0.1/index.js');
 
-      item.el.data('href').should.equal('https://github.com/yields/shortcuts/tree/0.0.1/index.js');
+      item.el.data('href').should.equal('https://github.com/yields/shortcuts/blob/0.0.1/index.js');
       item.el.hasClass('tooltipped').should.be.false;
     });
 
