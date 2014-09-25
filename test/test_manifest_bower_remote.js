@@ -24,7 +24,7 @@ describe('manifest', function() {
             return done(err);
           }
           $ = require('jquery')(window);
-          githubLinkerCore($, url, function(err, _result) {
+          githubLinkerCore(window, $, url, function(err, _result) {
             if (err) {
               throw err;
             }
