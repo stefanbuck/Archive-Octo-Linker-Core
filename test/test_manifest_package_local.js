@@ -53,7 +53,7 @@ describe('manifest', function() {
       });
 
       it('check link replacement', function() {
-        $('a.github-linker').length.should.equal(11);
+        $('a.github-linker').length.should.equal(13);
       });
 
       it('link https://github.com/lodash/lodash', function() {
@@ -127,7 +127,18 @@ describe('manifest', function() {
         item.el.attr('href').should.equal('https://www.npmjs.org/package/unknown-package-name');
         item.el.hasClass('tooltipped').should.be.false;
       });
+      
+      it('link directories', function() {
+        var directories = $('span.nt:contains("directories")').closest('tr');
+        var main = directories.next().find('.github-linker').attr('href');
+        var bin = directories.next().next().find('.github-linker').attr('href');
 
+        (!!main).should.equal(true);
+        main.should.equal('./main');
+        (!!bin).should.equal(true);
+        bin.should.equal('./bin');
+      });
+      
       it('entry file', function() {
         var mainFile = $('span.nt:contains("main")').parent().find('.github-linker').attr('href');
         (!!mainFile).should.equal(true);
