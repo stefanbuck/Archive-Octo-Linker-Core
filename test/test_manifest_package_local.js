@@ -53,7 +53,7 @@ describe('manifest', function() {
       });
 
       it('check link replacement', function() {
-        $('a.github-linker').length.should.equal(13);
+        $('a.github-linker').length.should.equal(14);
       });
 
       it('link https://github.com/lodash/lodash', function() {
@@ -127,7 +127,7 @@ describe('manifest', function() {
         item.el.attr('href').should.equal('https://www.npmjs.org/package/unknown-package-name');
         item.el.hasClass('tooltipped').should.be.false;
       });
-      
+
       it('link directories', function() {
         var directories = $('span.nt:contains("directories")').closest('tr');
         var main = directories.next().find('.github-linker').attr('href');
@@ -138,11 +138,19 @@ describe('manifest', function() {
         (!!bin).should.equal(true);
         bin.should.equal('./bin');
       });
-      
+
       it('entry file', function() {
-        var mainFile = $('span.nt:contains("main")').parent().find('.github-linker').attr('href');
+        var mainFile = $('span.nt:contains("main")').parent()
+                       .find('.s2:contains("index.js")').parent().attr('href');
         (!!mainFile).should.equal(true);
         mainFile.should.equal('index.js');
+      });
+
+      it('bin file', function() {
+        var binFile = $('span.nt:contains("bin")').parent()
+                       .find('.s2:contains("./index.js")').parent().attr('href');
+        (!!binFile).should.equal(true);
+        binFile.should.equal('./index.js');
       });
     });
   });
