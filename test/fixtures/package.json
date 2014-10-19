@@ -5,6 +5,11 @@
     "homepage": "https://github.com/stefanbuck/playground-repo",
     "bugs": "https://github.com/stefanbuck/playground-repo/issues",
     "license": "MIT",
+    "directories": {
+      "main": "./main",
+      "bin": "./bin"
+    },
+    "bin": "./index.js",
     "main": "index.js",
     "author": {
         "name": "Stefan Buck",
