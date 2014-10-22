@@ -14,7 +14,7 @@ var flash = require('./lib/flash');
 var utils = require('./lib/utils');
 
 var isNewVersion = function(global) {
-  var version = '3.0.x';
+  var version = '3.1.x';
   var installedVersion = global.localStorage.getItem('github-linker-version');
   if (installedVersion !== version) {
     global.localStorage.setItem('github-linker-version', version);
