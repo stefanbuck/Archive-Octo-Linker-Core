@@ -1,29 +1,31 @@
 'use strict';
 
-var githubLinkerCore = require('../');
+var githubLinkerCore = require('../../');
+var fs = require('fs');
+var path = require('path');
 var assert = require('should');
 var _ = require('lodash');
 var env = require('jsdom').env;
 
 describe('manifest', function() {
 
-  describe('package.json', function() {
+  describe('bower.json', function() {
 
-    describe('remote', function() {
-
-      this.timeout(4000);
-
+    describe('local new', function() {
       var $, result;
-      var url = 'https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/package.json';
+      var url = 'https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/bower.json';
+      var file = path.resolve(__dirname, '../fixtures_new/bower.json.html');
 
       before(function(done) {
         $ = result = null;
+        var html = fs.readFileSync(file, 'utf-8');
 
-        env(url, function(err, window) {
+        env(html, function(err, window) {
           if (err) {
             return done(err);
           }
           $ = require('jquery')(window);
+
           githubLinkerCore(window, $, url, function(err, _result) {
             if (err) {
               throw err;
@@ -39,19 +41,19 @@ describe('manifest', function() {
         // TODO Evaluate why this doesn't work
         // result.should.have.length(10);
 
-        result.length.should.equal(10);
+        result.length.should.equal(8);
       });
 
       it('check order', function() {
-        result.length.should.equal(10);
-        var pkgNames = ['lodash', 'request', 'modernizr', 'backbone', 'jquery', 'unknown-package-name', 'chai', 'gulp', 'yo', 'should'];
+        result.length.should.equal(8);
+        var pkgNames = ['lodash', 'modernizr', 'backbone', 'jquery', 'unknown-package-name', 'chai', 'should', 'lodash'];
         _.each(result, function(item, index) {
           item.name.should.equal( pkgNames[index] );
         });
       });
 
       it('check link replacement', function() {
-        $('a.github-linker').length.should.equal(14);
+        $('a.github-linker').length.should.equal(9);
       });
 
       it('link https://github.com/lodash/lodash', function() {
@@ -63,18 +65,6 @@ describe('manifest', function() {
         item.link.should.equal('https://github.com/lodash/lodash');
 
         item.el.attr('href').should.equal('https://github.com/lodash/lodash');
-        item.el.hasClass('tooltipped').should.be.false;
-      });
-
-      it('link https://www.npmjs.org/package/request', function() {
-        var item = _.findWhere(result, {
-          name: 'request'
-        });
-
-        (item.link === null).should.equal(false);
-        item.link.should.equal('https://www.npmjs.org/package/request');
-
-        item.el.attr('href').should.equal('https://www.npmjs.org/package/request');
         item.el.hasClass('tooltipped').should.be.false;
       });
 
@@ -114,41 +104,19 @@ describe('manifest', function() {
         item.el.hasClass('tooltipped').should.be.false;
       });
 
-      it('link https://www.npmjs.org/package/unknown-package-name', function() {
+      it('link http://bower.io/search/?q=unknown-package-name', function() {
         var item = _.findWhere(result, {
           name: 'unknown-package-name'
         });
 
         (item.link === null).should.equal(false);
-        item.link.should.equal('https://www.npmjs.org/package/unknown-package-name');
-
-        item.el.attr('href').should.equal('https://www.npmjs.org/package/unknown-package-name');
-        item.el.hasClass('tooltipped').should.be.false;
-      });
-
-      it('link directories', function() {
-        var directories = $('span.nt:contains("directories")').closest('tr');
-        var main = directories.next().find('.github-linker').attr('href');
-        var bin = directories.next().next().find('.github-linker').attr('href');
-
-        (!!main).should.equal(true);
-        main.should.equal('./main');
-        (!!bin).should.equal(true);
-        bin.should.equal('./bin');
+        item.link.should.equal('http://bower.io/search/?q=unknown-package-name');
       });
 
       it('entry file', function() {
-        var mainFile = $('span.nt:contains("main")').parent()
-                       .find('.s2:contains("index.js")').parent().attr('href');
+        var mainFile = $('span:contains("main")').parent().find('.github-linker').attr('href');
         (!!mainFile).should.equal(true);
         mainFile.should.equal('index.js');
-      });
-
-      it('bin file', function() {
-        var binFile = $('span.nt:contains("bin")').parent()
-                       .find('.s2:contains("./index.js")').parent().attr('href');
-        (!!binFile).should.equal(true);
-        binFile.should.equal('./index.js');
       });
     });
   });

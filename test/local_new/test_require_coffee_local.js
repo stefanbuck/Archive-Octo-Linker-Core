@@ -1,20 +1,24 @@
 'use strict';
 
-var githubLinkerCore = require('../');
+var githubLinkerCore = require('../../');
+var fs = require('fs');
+var path = require('path');
 var assert = require('should');
 var _ = require('lodash');
 var env = require('jsdom').env;
 
 describe('require.coffee', function() {
 
-  describe('local', function() {
+  describe('local new', function() {
     var $, result;
     var url = 'https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/require.coffee';
+    var file = path.resolve(__dirname, '../fixtures_new/require.coffee.html');
 
     before(function(done) {
       $ = result = null;
+      var html = fs.readFileSync(file, 'utf-8');
 
-      env(url, function(err, window) {
+      env(html, function(err, window) {
         if (err) {
           return done(err);
         }

@@ -1,6 +1,8 @@
 'use strict';
 
-var githubLinkerCore = require('../');
+var githubLinkerCore = require('../../');
+var fs = require('fs');
+var path = require('path');
 var assert = require('should');
 var _ = require('lodash');
 var env = require('jsdom').env;
@@ -9,21 +11,21 @@ describe('manifest', function() {
 
   describe('composer.json', function() {
 
-    describe('remote', function() {
-
-      this.timeout(4000);
-
+    describe('local', function() {
       var $, result;
       var url = 'https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/composer.json';
+      var file = path.resolve(__dirname, '../fixtures/composer.json.html');
 
       before(function(done) {
         $ = result = null;
+        var html = fs.readFileSync(file, 'utf-8');
 
-        env(url, function(err, window) {
+        env(html, function(err, window) {
           if (err) {
             return done(err);
           }
           $ = require('jquery')(window);
+
           githubLinkerCore(window, $, url, function(err, _result) {
             if (err) {
               throw err;

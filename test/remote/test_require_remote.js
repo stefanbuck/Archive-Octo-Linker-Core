@@ -1,6 +1,6 @@
 'use strict';
 
-var githubLinkerCore = require('../');
+var githubLinkerCore = require('../../');
 var assert = require('should');
 var _ = require('lodash');
 var env = require('jsdom').env;

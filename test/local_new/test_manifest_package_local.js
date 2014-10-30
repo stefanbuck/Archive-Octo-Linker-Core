@@ -1,6 +1,6 @@
 'use strict';
 
-var githubLinkerCore = require('../');
+var githubLinkerCore = require('../../');
 var fs = require('fs');
 var path = require('path');
 var assert = require('should');
@@ -11,10 +11,10 @@ describe('manifest', function() {
 
   describe('package.json', function() {
 
-    describe('local', function() {
+    describe('local new', function() {
       var $, result;
       var url = 'https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/package.json';
-      var file = path.resolve(__dirname, 'fixtures/package.json.html');
+      var file = path.resolve(__dirname, '../fixtures_new/package.json.html');
 
       before(function(done) {
         $ = result = null;
@@ -129,7 +129,7 @@ describe('manifest', function() {
       });
 
       it('link directories', function() {
-        var directories = $('span.nt:contains("directories")').closest('tr');
+        var directories = $('span.s2:contains("directories")').closest('tr');
         var main = directories.next().find('.github-linker').attr('href');
         var bin = directories.next().next().find('.github-linker').attr('href');
 
@@ -140,14 +140,14 @@ describe('manifest', function() {
       });
 
       it('entry file', function() {
-        var mainFile = $('span.nt:contains("main")').parent()
+        var mainFile = $('span:contains("main")').parent()
                        .find('.s2:contains("index.js")').parent().attr('href');
         (!!mainFile).should.equal(true);
         mainFile.should.equal('index.js');
       });
 
       it('bin file', function() {
-        var binFile = $('span.nt:contains("bin")').parent()
+        var binFile = $('span:contains("bin")').parent()
                        .find('.s2:contains("./index.js")').parent().attr('href');
         (!!binFile).should.equal(true);
         binFile.should.equal('./index.js');
