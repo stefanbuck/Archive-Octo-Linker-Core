@@ -52,19 +52,19 @@ describe('utils', function() {
   describe('stripQuotes', function() {
 
     it('lodash', function() {
-      utils.stripQuotes({html: function(){return 'lodash';}}).should.equal('lodash');
+      utils.stripQuotes({text: function(){return 'lodash';}}).should.equal('lodash');
     });
 
     it('"lodash"', function() {
-      utils.stripQuotes({html: function(){return '"lodash"';}}).should.equal('lodash');
+      utils.stripQuotes({text: function(){return '"lodash"';}}).should.equal('lodash');
     });
 
     it('\'lodash\'', function() {
-      utils.stripQuotes({html: function(){return '\'lodash\'';}}).should.equal('lodash');
+      utils.stripQuotes({text: function(){return '\'lodash\'';}}).should.equal('lodash');
     });
 
     it('"lodash\'', function() {
-      utils.stripQuotes({html: function(){return '"lodash\'';}}).should.equal('lodash');
+      utils.stripQuotes({text: function(){return '"lodash\'';}}).should.equal('lodash');
     });
 
   });

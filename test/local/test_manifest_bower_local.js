@@ -114,9 +114,7 @@ describe('manifest', function() {
       });
 
       it('entry file', function() {
-        var mainFile = $('span.nt:contains("main")').parent().find('.github-linker').attr('href');
-        (!!mainFile).should.equal(true);
-        mainFile.should.equal('index.js');
+        $('a.github-linker[href="index.js"]').length.should.equal(1);
       });
     });
   });

@@ -127,28 +127,16 @@ describe('manifest', function() {
       });
 
       it('link directories', function() {
-        var directories = $('span.nt:contains("directories")').closest('tr');
-        var main = directories.next().find('.github-linker').attr('href');
-        var bin = directories.next().next().find('.github-linker').attr('href');
-
-        (!!main).should.equal(true);
-        main.should.equal('./main');
-        (!!bin).should.equal(true);
-        bin.should.equal('./bin');
+        $('a.github-linker[href="./main"]').length.should.equal(1);
+        $('a.github-linker[href="./bin"]').length.should.equal(1);
       });
 
       it('entry file', function() {
-        var mainFile = $('span.nt:contains("main")').parent()
-                       .find('.s2:contains("index.js")').parent().attr('href');
-        (!!mainFile).should.equal(true);
-        mainFile.should.equal('index.js');
+        $('a.github-linker[href="index.js"]').length.should.equal(1);
       });
 
       it('bin file', function() {
-        var binFile = $('span.nt:contains("bin")').parent()
-                       .find('.s2:contains("./index.js")').parent().attr('href');
-        (!!binFile).should.equal(true);
-        binFile.should.equal('./index.js');
+        $('a.github-linker[href="./index.js"]').length.should.equal(1);
       });
     });
   });
