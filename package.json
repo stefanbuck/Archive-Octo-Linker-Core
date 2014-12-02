@@ -38,7 +38,7 @@
     "should": "^4.0.4"
   },
   "scripts": {
-    "coveralls": "gulp test && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "coveralls": "gulp test && TEST_ENV='remote' gulp test && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "test": "gulp test"
   }
 }
