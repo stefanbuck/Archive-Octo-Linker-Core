@@ -3,7 +3,7 @@ var util = require('util');
 var fs = require('fs');
 var path = require('path');
 var env = require('jsdom').env;
-var githubLinkerCore = require('../');
+var GitHubLinkerCore = require('..');
 
 module.exports = function(file, done) {
   var $, content, url, filePath;
@@ -25,7 +25,12 @@ module.exports = function(file, done) {
       return done(err);
     }
     $ = require('jquery')(window);
-    githubLinkerCore(window, $, url, function(err, result) {
+
+    var options = {
+      showUpdateNotification: false
+    };
+
+    new GitHubLinkerCore(window, url,  options, function(err, result) {
       if (err) {
         throw err;
       }
