@@ -15,6 +15,9 @@ var flash = require('./lib/flash');
 var utils = require('./lib/utils');
 
 var version = '3.1.x';
+var defaultOptions = {
+  showUpdateNotification: false
+};
 
 var GitHubLinkerCore = function(global, url, options, cb) {
   options = options || {};
@@ -26,10 +29,7 @@ var GitHubLinkerCore = function(global, url, options, cb) {
     return cb(null);
   }
 
-  var defaults = {
-    showUpdateNotification: true
-  };
-  this.options = _.defaults(options, defaults);
+  this.options = _.defaults(options, defaultOptions);
 
   if (this.showUpdateNotification() && this.isNewVersion()) {
     flash($);
