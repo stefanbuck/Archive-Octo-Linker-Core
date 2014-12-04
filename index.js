@@ -14,7 +14,7 @@ var reqr = require('./lib/require');
 var flash = require('./lib/flash');
 var utils = require('./lib/utils');
 
-var version = '3.1.x';
+var version = '3.2.x';
 var defaultOptions = {
   showUpdateNotification: false
 };
@@ -23,7 +23,8 @@ var GitHubLinkerCore = function(global, url, options, cb) {
   options = options || {};
   cb = cb || function() {};
 
-  var $ = global.$;
+  this.global = global;
+  var $ = this.global.$;
 
   if ($('.github-linker').length > 0) {
     return cb(null);
