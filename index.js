@@ -38,7 +38,7 @@ var GitHubLinkerCore = function(global, url, options, cb) {
 
   if (manifest.supported(url)) {
     manifest.init($, url, cb);
-  } else if (reqr.supported(url)) {
+  } else {
     reqr.init($, url, cb);
   }
 };
