@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.3.0 (2015-01-04)
+- Resolve `require()` in GitHub's Pull Request and Issues view.
+- Resolve `require()` in markdown files, if the [syntax highlighting](https://help.github.com/articles/github-flavored-markdown/#syntax-highlighting) is set to javascript.
+
 ## v1.2.0 (2014-12-04)
 - Add jsx support [#6](https://github.com/stefanbuck/github-linker-core/issues/6)  ([Thanks @thejameskyle](https://github.com/thejameskyle))
 - Add options arg for the upcoming features [#7](https://github.com/stefanbuck/github-linker-core/issues/7)
