@@ -5,10 +5,16 @@ var path = require('path');
 var env = require('jsdom').env;
 var GitHubLinkerCore = require('..');
 
-module.exports = function(file, done) {
-  var $, content, url, filePath;
+module.exports = function(file, url, done) {
+  var $, content, baseUrl, filePath;
+  baseUrl = 'https://github.com/stefanbuck/github-linker-core/';
 
-  url = util.format('https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/%s', file);
+  if (typeof url === 'function') {
+    done = url;
+    url = 'blob/master/test/fixtures/' + file;
+  }
+
+  url = baseUrl + url;
 
   if (process.env.TEST_ENV === 'remote') {
     content = url;
