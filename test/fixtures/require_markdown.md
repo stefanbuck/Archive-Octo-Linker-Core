@@ -1,4 +1,0 @@
-
-```js
-require('lodash');
-```
