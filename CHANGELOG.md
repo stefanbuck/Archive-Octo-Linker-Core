@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.4.0 (2015-01-07)
+- Resolve git urls from mainifest files like `package.json` or `bower.json` to there GitHub repo page.
+
 ## v1.3.0 (2015-01-04)
 - Resolve `require()` in GitHub's Pull Request and Issues view.
 - Resolve `require()` in markdown files, if the [syntax highlighting](https://help.github.com/articles/github-flavored-markdown/#syntax-highlighting) is set to javascript.
