@@ -2,23 +2,23 @@
   "name": "github-linker-core",
   "description": "The GitHub Linker core",
   "version": "1.4.0",
-  "homepage": "https://github.com/stefanbuck/github-linker",
-  "bugs": "https://github.com/stefanbuck/github-linker-core/issues",
+  "homepage": "https://github.com/github-linker/core",
+  "bugs": "https://github.com/github-linker/core/issues",
   "license": "MIT",
   "main": "index.js",
   "author": {
     "name": "Stefan Buck",
-    "email": "dev@stefanbuck.com",
+    "email": "github@stefanbuck.com",
     "url": "http://stefanbuck.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/stefanbuck/github-linker-core"
+    "url": "https://github.com/github-linker/core"
   },
   "keywords": [],
   "dependencies": {
     "github-linker-cache": "^0.2.0",
-    "github-linker-resolve": "^0.2.0",
+    "github-linker-resolver": "^0.2.0",
     "jquery": "^2.1.1",
     "lodash": "2.4.1"
   },

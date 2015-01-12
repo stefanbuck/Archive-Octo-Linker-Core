@@ -7,7 +7,7 @@ var GitHubLinkerCore = require('..');
 
 module.exports = function(file, url, done) {
   var $, content, baseUrl, filePath;
-  baseUrl = 'https://github.com/stefanbuck/github-linker-core/';
+  baseUrl = 'https://github.com/github-linker/core/';
 
   if (typeof url === 'function') {
     done = url;
