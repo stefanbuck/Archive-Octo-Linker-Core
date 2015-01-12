@@ -102,9 +102,9 @@ describe('require.js', function() {
       name: './file.js'
     });
 
-    item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/file.js');
+    item.link.should.equal('https://github.com/github-linker/core/blob/master/test/fixtures/file.js');
 
-    item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/file.js');
+    item.el.data('href').should.equal('https://github.com/github-linker/core/blob/master/test/fixtures/file.js');
     item.el.hasClass('tooltipped').should.be.false;
   });
 
@@ -113,9 +113,9 @@ describe('require.js', function() {
       name: './folder/file.js'
     });
 
-    item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/folder/file.js');
+    item.link.should.equal('https://github.com/github-linker/core/blob/master/test/fixtures/folder/file.js');
 
-    item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/folder/file.js');
+    item.el.data('href').should.equal('https://github.com/github-linker/core/blob/master/test/fixtures/folder/file.js');
     item.el.hasClass('tooltipped').should.be.false;
   });
 
@@ -125,9 +125,9 @@ describe('require.js', function() {
     });
 
     item.resolveLink.should.be.ok;
-    item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/file-or-folder');
+    item.link.should.equal('https://github.com/github-linker/core/blob/master/test/fixtures/file-or-folder');
 
-    item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures/file-or-folder');
+    item.el.data('href').should.equal('https://github.com/github-linker/core/blob/master/test/fixtures/file-or-folder');
     item.el.hasClass('tooltipped').should.be.false;
   });
 
@@ -136,9 +136,9 @@ describe('require.js', function() {
       name: '../file.js'
     });
 
-    item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/file.js');
+    item.link.should.equal('https://github.com/github-linker/core/blob/master/test/file.js');
 
-    item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/file.js');
+    item.el.data('href').should.equal('https://github.com/github-linker/core/blob/master/test/file.js');
     item.el.hasClass('tooltipped').should.be.false;
   });
 
@@ -147,9 +147,9 @@ describe('require.js', function() {
       name: '../folder/file.js'
     });
 
-    item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/folder/file.js');
+    item.link.should.equal('https://github.com/github-linker/core/blob/master/test/folder/file.js');
 
-    item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/folder/file.js');
+    item.el.data('href').should.equal('https://github.com/github-linker/core/blob/master/test/folder/file.js');
     item.el.hasClass('tooltipped').should.be.false;
   });
 
@@ -159,9 +159,9 @@ describe('require.js', function() {
     });
 
     item.resolveLink.should.be.ok;
-    item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/file-or-folder');
+    item.link.should.equal('https://github.com/github-linker/core/blob/master/test/file-or-folder');
 
-    item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/file-or-folder');
+    item.el.data('href').should.equal('https://github.com/github-linker/core/blob/master/test/file-or-folder');
     item.el.hasClass('tooltipped').should.be.false;
   });
 
@@ -170,9 +170,9 @@ describe('require.js', function() {
       name: '../../file.js'
     });
 
-    item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/file.js');
+    item.link.should.equal('https://github.com/github-linker/core/blob/master/file.js');
 
-    item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/file.js');
+    item.el.data('href').should.equal('https://github.com/github-linker/core/blob/master/file.js');
     item.el.hasClass('tooltipped').should.be.false;
   });
 
@@ -181,9 +181,9 @@ describe('require.js', function() {
       name: '../../folder/file.js'
     });
 
-    item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/folder/file.js');
+    item.link.should.equal('https://github.com/github-linker/core/blob/master/folder/file.js');
 
-    item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/folder/file.js');
+    item.el.data('href').should.equal('https://github.com/github-linker/core/blob/master/folder/file.js');
     item.el.hasClass('tooltipped').should.be.false;
   });
 
@@ -193,9 +193,9 @@ describe('require.js', function() {
     });
 
     item.resolveLink.should.be.ok;
-    item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/file-or-folder');
+    item.link.should.equal('https://github.com/github-linker/core/blob/master/file-or-folder');
 
-    item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/file-or-folder');
+    item.el.data('href').should.equal('https://github.com/github-linker/core/blob/master/file-or-folder');
     item.el.hasClass('tooltipped').should.be.false;
   });
 
@@ -205,9 +205,9 @@ describe('require.js', function() {
     });
 
     item.resolveLink.should.be.ok;
-    item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures');
+    item.link.should.equal('https://github.com/github-linker/core/blob/master/test/fixtures');
 
-    item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test/fixtures');
+    item.el.data('href').should.equal('https://github.com/github-linker/core/blob/master/test/fixtures');
     item.el.hasClass('tooltipped').should.be.false;
   });
 
@@ -217,9 +217,9 @@ describe('require.js', function() {
     });
 
     item.resolveLink.should.be.ok;
-    item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test');
+    item.link.should.equal('https://github.com/github-linker/core/blob/master/test');
 
-    item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test');
+    item.el.data('href').should.equal('https://github.com/github-linker/core/blob/master/test');
     item.el.hasClass('tooltipped').should.be.false;
   });
 
@@ -229,9 +229,9 @@ describe('require.js', function() {
     });
 
     item.resolveLink.should.be.ok;
-    item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test');
+    item.link.should.equal('https://github.com/github-linker/core/blob/master/test');
 
-    item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master/test');
+    item.el.data('href').should.equal('https://github.com/github-linker/core/blob/master/test');
     item.el.hasClass('tooltipped').should.be.false;
   });
 
@@ -241,9 +241,9 @@ describe('require.js', function() {
     });
 
     item.resolveLink.should.be.ok;
-    item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master');
+    item.link.should.equal('https://github.com/github-linker/core/blob/master');
 
-    item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master');
+    item.el.data('href').should.equal('https://github.com/github-linker/core/blob/master');
     item.el.hasClass('tooltipped').should.be.false;
   });
 
@@ -253,9 +253,9 @@ describe('require.js', function() {
     });
 
     item.resolveLink.should.be.ok;
-    item.link.should.equal('https://github.com/stefanbuck/github-linker-core/blob/master');
+    item.link.should.equal('https://github.com/github-linker/core/blob/master');
 
-    item.el.data('href').should.equal('https://github.com/stefanbuck/github-linker-core/blob/master');
+    item.el.data('href').should.equal('https://github.com/github-linker/core/blob/master');
     item.el.hasClass('tooltipped').should.be.false;
   });
 
