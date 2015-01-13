@@ -3,6 +3,7 @@
 require('should');
 var _ = require('lodash');
 var helper = require('./helper');
+var registries = require('github-linker-cache');
 
 describe('bower.json', function() {
 
@@ -10,6 +11,10 @@ describe('bower.json', function() {
 
   before(function(done) {
     this.$ = this.result = null;
+
+    registries.bower = {
+      lodash: 'https://github.com/lodash/lodash'
+    };
 
     helper('bower.json', function(_jquery, _result) {
       this.$ = _jquery;
