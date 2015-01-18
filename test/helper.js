@@ -3,7 +3,7 @@ var util = require('util');
 var fs = require('fs');
 var path = require('path');
 var env = require('jsdom').env;
-var GitHubLinkerCore = require('..');
+var core = require('..');
 
 module.exports = function(file, url, done) {
   var $, content, baseUrl, filePath;
@@ -32,11 +32,15 @@ module.exports = function(file, url, done) {
     }
     $ = require('jquery')(window);
 
+    if (process.env.TEST_ENV !== 'remote') {
+      window.document.location.href = url;
+    }
+
     var options = {
       showUpdateNotification: false
     };
 
-    new GitHubLinkerCore(window, url,  options, function(err, result) {
+    core(window, options, function(err, result) {
       if (err) {
         throw err;
       }
