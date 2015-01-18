@@ -9,58 +9,38 @@
 'use strict';
 
 var _ = require('lodash');
-var manifest = require('./lib/manifest');
-var reqr = require('./lib/require');
-var flash = require('./lib/flash');
-var utils = require('./lib/utils');
+var GitHubLinkerCore = require('./lib/core.js');
 
-var version = '3.2.x';
-var defaultOptions = {
-  showUpdateNotification: false
-};
+function spyInject(global, cb, context) {
+  cb = _.debounce(cb, 250).bind(context);
 
-var GitHubLinkerCore = function(global, url, options, cb) {
-  options = options || {};
-  cb = cb || function() {};
-
-  this.global = global;
-  var $ = this.global.$;
-
-  if ($('.github-linker').length > 0) {
-    return cb(null);
+  var domElement = global.document.getElementById('js-repo-pjax-container');
+  if (!domElement || !global.MutationObserver) {
+    return cb();
   }
 
-  this.options = _.defaults(options, defaultOptions);
+  var viewSpy = new global.MutationObserver(function (mutations) {
+    mutations.forEach(function (mutation) {
+      if (mutation.type === 'childList' && mutation.addedNodes.length) {
+        cb();
+      }
+    });
+  });
 
-  if (this.showUpdateNotification() && this.isNewVersion()) {
-    flash($);
-  }
+  viewSpy.observe(domElement, {
+    attributes: true,
+    childList: true,
+    characterData: true
+  });
 
-  if (manifest.supported(url)) {
-    manifest.init($, url, cb);
-  } else {
-    reqr.init($, url, cb);
-  }
-};
+  cb();
+}
 
-GitHubLinkerCore.prototype.showUpdateNotification = function() {
-  if (this.options.showUpdateNotification && utils.runInBrowser(this.global)) {
-    return true;
-  }
-  return false;
-};
+module.exports  = function(global, options, cb) {
+  var instance  = new GitHubLinkerCore(global, options);
+  spyInject(global, function() {
+    instance.init(cb);
+  }, instance);
 
-GitHubLinkerCore.prototype.isNewVersion = function() {
-  var installedVersion = this.global.localStorage.getItem('github-linker-version');
-  if (installedVersion !== version) {
-    this.global.localStorage.setItem('github-linker-version', version);
-    if (installedVersion) {
-      return true;
-    }
-  }
-  return false;
-};
-
-module.exports  = function(global, url, options, cb) {
-  new GitHubLinkerCore(global, url, options, cb);
+  return instance;
 };
