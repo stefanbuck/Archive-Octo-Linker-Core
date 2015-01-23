@@ -17,6 +17,7 @@
   },
   "keywords": [],
   "dependencies": {
+    "async": "^0.9.0",
     "github-linker-cache": "^0.2.0",
     "github-linker-resolver": "^0.2.0",
     "jquery": "^2.1.1",
