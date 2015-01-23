@@ -18,7 +18,7 @@ describe('bower.json', function() {
 
     helper('bower.json', function(_jquery, _result) {
       this.$ = _jquery;
-      this.result = _result;
+      this.result = _result.manifest;
       done();
     }.bind(this));
   });

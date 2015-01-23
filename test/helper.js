@@ -36,11 +36,17 @@ module.exports = function(file, url, done) {
       window.document.location.href = url;
     }
 
+    if (process.env.TEST_ENV !== 'remote') {
+      window.document.location.href = url;
+    }
+
     var options = {
-      showUpdateNotification: false
+      showUpdateNotification: false,
+      changelog: 'https://github.com/github-linker/chrome-extension/releases',
+      version: '4.0.0'
     };
 
-    core(window, options, function(err, result) {
+    core(window, options).init(function(err, result) {
       if (err) {
         throw err;
       }

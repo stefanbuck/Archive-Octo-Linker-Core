@@ -13,7 +13,7 @@ describe('require.coffee', function() {
 
     helper('require.coffee', function(_jquery, _result) {
       this.$ = _jquery;
-      this.result = _result;
+      this.result = _result.require;
       done();
     }.bind(this));
   });

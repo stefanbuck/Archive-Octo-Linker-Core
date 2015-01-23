@@ -13,7 +13,7 @@ describe('require_markdown.md', function() {
 
     helper('require_markdown.md', function(_jquery, _result) {
       this.$ = _jquery;
-      this.result = _result;
+      this.result = _result.require;
       done();
     }.bind(this));
   });

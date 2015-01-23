@@ -18,7 +18,7 @@ describe('package.json', function() {
 
     helper('package.json', function(_jquery, _result) {
       this.$ = _jquery;
-      this.result = _result;
+      this.result = _result.manifest;
       done();
     }.bind(this));
   });
