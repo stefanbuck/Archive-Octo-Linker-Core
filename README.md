@@ -55,7 +55,9 @@ var core = require('github-linker-core');
 var $ = require('jquery');
 
 var options = {
-  showUpdateNotification: false
+  showUpdateNotification: true,
+  changelog: 'https://github.com/github-linker/chrome-extension/releases',
+  version: '1.0.0'
 };
 
 core(window, options, function(err, result) {
