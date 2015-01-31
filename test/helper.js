@@ -11,10 +11,8 @@ module.exports = function(file, url, done) {
 
   if (typeof url === 'function') {
     done = url;
-    url = 'blob/master/test/fixtures/' + file;
+    url = baseUrl + 'blob/master/test/fixtures/' + file;
   }
-
-  url = baseUrl + url;
 
   if (process.env.TEST_ENV === 'remote') {
     content = url;
