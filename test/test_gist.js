@@ -4,14 +4,14 @@ require('should');
 var _ = require('lodash');
 var helper = require('./helper');
 
-describe('require issues', function() {
+describe('gist', function() {
 
   this.timeout(4000);
 
   before(function(done) {
     this.$ = this.result = null;
 
-    helper('require_issues', 'http://github.com/github-linker/core/issues/10', function(_jquery, _result) {
+    helper('gist', 'https://gist.github.com/petereberlecom/a61cb95f9b28270d86a9', function(_jquery, _result) {
       this.$ = _jquery;
       this.result = _result.require;
       done();
@@ -22,19 +22,14 @@ describe('require issues', function() {
     this.result.length.should.equal(1);
   });
 
-  it('check link replacement', function() {
-    this.$('a.github-linker').length.should.equal(1);
-  });
-
-  it('https://github.com/lodash/lodash', function() {
+  it('https://github.com/github-linker/core', function() {
     var item = _.findWhere(this.result, {
-      name: 'lodash'
+      name: 'github-linker-core'
     });
 
-    item.link.should.equal('https://github.com/lodash/lodash');
+    item.link.should.equal('https://github.com/github-linker/core');
 
-    item.el.attr('href').should.equal('https://github.com/lodash/lodash');
+    item.el.attr('href').should.equal('https://github.com/github-linker/core');
     item.el.hasClass('tooltipped').should.be.false;
   });
-
 });
