@@ -22,7 +22,8 @@
     "github-linker-cache": "^0.2.0",
     "github-linker-resolver": "^0.2.0",
     "jquery": "^2.1.1",
-    "lodash": "2.4.1"
+    "lodash": "2.4.1",
+    "validate-npm-package-name": "^2.0.1"
   },
   "devDependencies": {
     "coveralls": "^2.11.1",
