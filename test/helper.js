@@ -45,7 +45,7 @@ module.exports = function(file, url, done) {
       version: '4.0.0'
     };
 
-    core(window, options).init(function(err, result) {
+    core(window, options, function(err, result) {
       if (err) {
         throw err;
       }
