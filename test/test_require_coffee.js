@@ -24,14 +24,14 @@ describe('require.coffee', function() {
     this.result.length.should.equal(2);
   });
 
-  it('http://nodejs.org/api/path.html', function() {
+  it('http://iojs.org/api/path.html', function() {
     var item = _.findWhere(this.result, {
       name: 'path'
     });
 
-    item.link.should.equal('http://nodejs.org/api/path.html');
+    item.link.should.equal('http://iojs.org/api/path.html');
 
-    item.el.attr('href').should.equal('http://nodejs.org/api/path.html');
+    item.el.attr('href').should.equal('http://iojs.org/api/path.html');
     item.el.hasClass('tooltipped').should.be.false;
   });
 
