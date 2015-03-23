@@ -44,6 +44,7 @@
   "scripts": {
     "test": "npm run test-local && npm run test-remote && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "test-local": "gulp test",
-    "test-remote": "TEST_ENV='remote' gulp test"
+    "test-remote": "TEST_ENV='remote' gulp test",
+    "update-fixtures": "./test/update_fixtures.sh"
   }
 }

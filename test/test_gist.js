@@ -4,7 +4,7 @@ require('should');
 var _ = require('lodash');
 var helper = require('./helper');
 
-describe('gist', function() {
+describe.skip('gist', function() {
 
   this.timeout(4000);
 
