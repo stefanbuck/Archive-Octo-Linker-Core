@@ -21,7 +21,7 @@ describe('require.es6', function() {
   it('found dependencies', function() {
     // TODO Evaluate why this doesn't work
     // result.should.have.length(4);
-    this.result.length.should.equal(4);
+    this.result.length.should.equal(5);
   });
 
   it('http://iojs.org/api/path.html', function() {
@@ -46,5 +46,16 @@ describe('require.es6', function() {
       item.el.attr('href').should.equal('https://github.com/lodash/lodash');
       item.el.hasClass('tooltipped').should.be.false;
     });
+  });
+
+  it('http://iojs.org/api/url.html', function() {
+    var item = _.findWhere(this.result, {
+      name: 'url'
+    });
+
+    item.link.should.equal('http://iojs.org/api/url.html');
+
+    item.el.attr('href').should.equal('http://iojs.org/api/url.html');
+    item.el.hasClass('tooltipped').should.be.false;
   });
 });
