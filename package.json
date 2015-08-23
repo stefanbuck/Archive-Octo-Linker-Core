@@ -1,7 +1,7 @@
 {
   "name": "github-linker-core",
   "description": "The GitHub Linker core",
-  "version": "1.8.1",
+  "version": "1.9.0",
   "homepage": "https://github.com/github-linker/core",
   "bugs": "https://github.com/github-linker/core/issues",
   "license": "MIT",
@@ -17,14 +17,12 @@
   },
   "keywords": [],
   "dependencies": {
-    "async": "^0.9.0",
-    "builtins": "0.0.7",
+    "async": "^1.4.2",
+    "builtins": "^1.0.2",
     "github-injection": "^0.1.0",
-    "github-linker-cache": "^0.2.0",
     "github-linker-resolver": "^0.2.0",
     "jquery": "^2.1.1",
-    "lodash": "2.4.1",
-    "validate-npm-package-name": "^2.0.1"
+    "lodash": "2.4.1"
   },
   "devDependencies": {
     "coveralls": "^2.11.1",

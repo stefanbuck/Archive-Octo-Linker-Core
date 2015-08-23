@@ -19,7 +19,8 @@
     "beforeEach" : false,
     "after"      : false,
     "afterEach"  : false,
-    "window"  : false,
-    "localStorage"  : false
+    "window"     : false,
+    "location"   : false,
+    "$"          : false
   }
 }

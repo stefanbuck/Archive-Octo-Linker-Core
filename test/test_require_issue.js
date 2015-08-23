@@ -9,10 +9,10 @@ describe('require issues', function() {
   this.timeout(4000);
 
   before(function(done) {
-    this.$ = this.result = null;
-
-    helper('require_issues', 'http://github.com/github-linker/core/issues/10', function(_jquery, _result) {
-      this.$ = _jquery;
+    helper('require_issues', 'http://github.com/github-linker/core/issues/10', function(err, _result) {
+      if (err) {
+        return done(err);
+      }
       this.result = _result.require;
       done();
     }.bind(this));
@@ -23,7 +23,7 @@ describe('require issues', function() {
   });
 
   it('check link replacement', function() {
-    this.$('a.github-linker').length.should.equal(1);
+    $('.github-linker').length.should.equal(1);
   });
 
   it('https://github.com/lodash/lodash', function() {
@@ -31,10 +31,8 @@ describe('require issues', function() {
       name: 'lodash'
     });
 
-    item.link.should.equal('https://github.com/lodash/lodash');
-
-    item.el.attr('href').should.equal('https://github.com/lodash/lodash');
-    item.el.hasClass('tooltipped').should.be.false;
+    item.el.data('type').should.equal('npm');
+    item.el.data('value').should.equal('lodash');
   });
 
 });

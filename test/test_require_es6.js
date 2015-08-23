@@ -9,18 +9,16 @@ describe('require.es6', function() {
   this.timeout(4000);
 
   before(function(done) {
-    this.$ = this.result = null;
-
-    helper('require.es6', function(_jquery, _result) {
-      this.$ = _jquery;
+    helper('require.es6', function(err, _result) {
+      if (err) {
+        return done(err);
+      }
       this.result = _result.require;
       done();
     }.bind(this));
   });
 
   it('found dependencies', function() {
-    // TODO Evaluate why this doesn't work
-    // result.should.have.length(4);
     this.result.length.should.equal(5);
   });
 
@@ -29,23 +27,17 @@ describe('require.es6', function() {
       name: 'path'
     });
 
-    item.link.should.equal('http://iojs.org/api/path.html');
-
-    item.el.attr('href').should.equal('http://iojs.org/api/path.html');
-    item.el.hasClass('tooltipped').should.be.false;
+    item.el.data('type').should.equal('npm');
+    item.el.data('value').should.equal('path');
   });
 
   it('https://github.com/lodash/lodash', function() {
-    var items = _.where(this.result, {
+    var item = _.findWhere(this.result, {
       name: 'lodash'
     });
 
-    items.forEach(function(item) {
-      item.link.should.equal('https://github.com/lodash/lodash');
-
-      item.el.attr('href').should.equal('https://github.com/lodash/lodash');
-      item.el.hasClass('tooltipped').should.be.false;
-    });
+    item.el.data('type').should.equal('npm');
+    item.el.data('value').should.equal('lodash');
   });
 
   it('http://iojs.org/api/url.html', function() {
@@ -53,9 +45,7 @@ describe('require.es6', function() {
       name: 'url'
     });
 
-    item.link.should.equal('http://iojs.org/api/url.html');
-
-    item.el.attr('href').should.equal('http://iojs.org/api/url.html');
-    item.el.hasClass('tooltipped').should.be.false;
+    item.el.data('type').should.equal('npm');
+    item.el.data('value').should.equal('url');
   });
 });

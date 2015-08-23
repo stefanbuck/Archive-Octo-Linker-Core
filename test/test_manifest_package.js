@@ -3,29 +3,22 @@
 var assert = require('should');
 var _ = require('lodash');
 var helper = require('./helper');
-var registries = require('github-linker-cache');
 
 describe('package.json', function() {
 
   this.timeout(4000);
 
   before(function(done) {
-    this.$ = this.result = null;
-
-    registries.npm = {
-      lodash: 'https://github.com/lodash/lodash'
-    };
-
-    helper('package.json', function(_jquery, _result) {
-      this.$ = _jquery;
+    helper('package.json', function(err, _result) {
+      if (err) {
+        return done(err);
+      }
       this.result = _result.manifest;
       done();
     }.bind(this));
   });
 
   it('found dependencies', function() {
-    // TODO Evaluate why this doesn't work
-    // this.result.should.have.length(10);
     this.result.length.should.equal(10);
   });
 
@@ -38,7 +31,7 @@ describe('package.json', function() {
   });
 
   it('check link replacement', function() {
-    this.$('a.github-linker').length.should.equal(14);
+    $('.github-linker').length.should.equal(14);
   });
 
   it('link https://github.com/lodash/lodash', function() {
@@ -46,11 +39,8 @@ describe('package.json', function() {
       name: 'lodash'
     });
 
-    (item.link === null).should.equal(false);
-    item.link.should.equal('https://github.com/lodash/lodash');
-
-    item.el.attr('href').should.equal('https://github.com/lodash/lodash');
-    item.el.hasClass('tooltipped').should.be.false;
+    item.el.data('type').should.equal('npm');
+    item.el.data('value').should.equal('lodash');
   });
 
   it('link https://www.npmjs.org/package/request', function() {
@@ -58,11 +48,8 @@ describe('package.json', function() {
       name: 'request'
     });
 
-    (item.link === null).should.equal(false);
-    item.link.should.equal('https://www.npmjs.org/package/request');
-
-    item.el.attr('href').should.equal('https://www.npmjs.org/package/request');
-    item.el.hasClass('tooltipped').should.be.false;
+    item.el.data('type').should.equal('npm');
+    item.el.data('value').should.equal('request');
   });
 
   it('link https://github.com/Modernizr/Modernizr', function() {
@@ -70,11 +57,8 @@ describe('package.json', function() {
       name: 'modernizr'
     });
 
-    (item.link === null).should.equal(false);
-    item.link.should.equal('https://github.com/Modernizr/Modernizr');
-
-    item.el.attr('href').should.equal('https://github.com/Modernizr/Modernizr');
-    item.el.hasClass('tooltipped').should.be.false;
+    item.el.data('type').should.equal('npm');
+    item.el.data('value').should.equal('modernizr');
   });
 
   it('link https://github.com/jashkenas/backbone/tree/master', function() {
@@ -82,11 +66,8 @@ describe('package.json', function() {
       name: 'backbone'
     });
 
-    (item.link === null).should.equal(false);
-    item.link.should.equal('https://github.com/jashkenas/backbone/tree/master');
-
-    item.el.attr('href').should.equal('https://github.com/jashkenas/backbone/tree/master');
-    item.el.hasClass('tooltipped').should.be.false;
+    item.el.data('type').should.equal('npm');
+    item.el.data('value').should.equal('backbone');
   });
 
   it('link https://github.com/jquery/jquery/tree/1.x-master', function() {
@@ -94,11 +75,8 @@ describe('package.json', function() {
       name: 'jquery'
     });
 
-    (item.link === null).should.equal(false);
-    item.link.should.equal('https://github.com/jquery/jquery/tree/1.x-master');
-
-    item.el.attr('href').should.equal('https://github.com/jquery/jquery/tree/1.x-master');
-    item.el.hasClass('tooltipped').should.be.false;
+    item.el.data('type').should.equal('npm');
+    item.el.data('value').should.equal('jquery');
   });
 
   it('link https://www.npmjs.org/package/unknown-package-name', function() {
@@ -106,23 +84,20 @@ describe('package.json', function() {
       name: 'unknown-package-name'
     });
 
-    (item.link === null).should.equal(false);
-    item.link.should.equal('https://www.npmjs.org/package/unknown-package-name');
-
-    item.el.attr('href').should.equal('https://www.npmjs.org/package/unknown-package-name');
-    item.el.hasClass('tooltipped').should.be.false;
+    item.el.data('type').should.equal('npm');
+    item.el.data('value').should.equal('unknown-package-name');
   });
 
   it('link directories', function() {
-    this.$('a.github-linker[href="./main"]').length.should.equal(1);
-    this.$('a.github-linker[href="./bin"]').length.should.equal(1);
+    $('.github-linker[href="./main"]').length.should.equal(1);
+    $('.github-linker[href="./bin"]').length.should.equal(1);
   });
 
   it('entry file', function() {
-    this.$('a.github-linker[href="index.js"]').length.should.equal(1);
+    $('.github-linker[href="index.js"]').length.should.equal(1);
   });
 
   it('bin file', function() {
-    this.$('a.github-linker[href="./index.js"]').length.should.equal(1);
+    $('.github-linker[href="./index.js"]').length.should.equal(1);
   });
 });
