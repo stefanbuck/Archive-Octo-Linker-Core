@@ -3,29 +3,23 @@
 require('should');
 var _ = require('lodash');
 var helper = require('./helper');
-var registries = require('github-linker-cache');
+// var registries = require('github-linker-cache');
 
 describe('bower.json', function() {
 
   this.timeout(4000);
 
   before(function(done) {
-    this.$ = this.result = null;
-
-    registries.bower = {
-      lodash: 'https://github.com/lodash/lodash'
-    };
-
-    helper('bower.json', function(_jquery, _result) {
-      this.$ = _jquery;
+    helper('bower.json', function(err, _result) {
+      if (err) {
+        return done(err);
+      }
       this.result = _result.manifest;
       done();
     }.bind(this));
   });
 
   it('found dependencies', function() {
-    // TODO Evaluate why this doesn't work
-    // this.result.should.have.length(10);
     this.result.length.should.equal(8);
   });
 
@@ -38,7 +32,7 @@ describe('bower.json', function() {
   });
 
   it('check link replacement', function() {
-    this.$('a.github-linker').length.should.equal(9);
+    $('.github-linker').length.should.equal(9);
   });
 
   it('link https://github.com/lodash/lodash', function() {
@@ -46,11 +40,8 @@ describe('bower.json', function() {
       name: 'lodash'
     });
 
-    (item.link === null).should.equal(false);
-    item.link.should.equal('https://github.com/lodash/lodash');
-
-    item.el.attr('href').should.equal('https://github.com/lodash/lodash');
-    item.el.hasClass('tooltipped').should.be.false;
+    item.el.data('type').should.equal('bower');
+    item.el.data('value').should.equal('lodash');
   });
 
   it('link https://github.com/Modernizr/Modernizr', function() {
@@ -58,11 +49,8 @@ describe('bower.json', function() {
       name: 'modernizr'
     });
 
-    (item.link === null).should.equal(false);
-    item.link.should.equal('https://github.com/Modernizr/Modernizr');
-
-    item.el.attr('href').should.equal('https://github.com/Modernizr/Modernizr');
-    item.el.hasClass('tooltipped').should.be.false;
+    item.el.data('type').should.equal('bower');
+    item.el.data('value').should.equal('modernizr');
   });
 
   it('link https://github.com/jashkenas/backbone/tree/master', function() {
@@ -70,11 +58,8 @@ describe('bower.json', function() {
       name: 'backbone'
     });
 
-    (item.link === null).should.equal(false);
-    item.link.should.equal('https://github.com/jashkenas/backbone/tree/master');
-
-    item.el.attr('href').should.equal('https://github.com/jashkenas/backbone/tree/master');
-    item.el.hasClass('tooltipped').should.be.false;
+    item.el.data('type').should.equal('bower');
+    item.el.data('value').should.equal('backbone');
   });
 
   it('link https://github.com/jquery/jquery/tree/1.x-master', function() {
@@ -82,11 +67,8 @@ describe('bower.json', function() {
       name: 'jquery'
     });
 
-    (item.link === null).should.equal(false);
-    item.link.should.equal('https://github.com/jquery/jquery/tree/1.x-master');
-
-    item.el.attr('href').should.equal('https://github.com/jquery/jquery/tree/1.x-master');
-    item.el.hasClass('tooltipped').should.be.false;
+    item.el.data('type').should.equal('bower');
+    item.el.data('value').should.equal('jquery');
   });
 
   it('link http://bower.io/search/?q=unknown-package-name', function() {
@@ -94,11 +76,11 @@ describe('bower.json', function() {
       name: 'unknown-package-name'
     });
 
-    (item.link === null).should.equal(false);
-    item.link.should.equal('http://bower.io/search/?q=unknown-package-name');
+    item.el.data('type').should.equal('bower');
+    item.el.data('value').should.equal('unknown-package-name');
   });
 
   it('entry file', function() {
-    this.$('a.github-linker[href="index.js"]').length.should.equal(1);
+    $('.github-linker[href="index.js"]').length.should.equal(1);
   });
 });

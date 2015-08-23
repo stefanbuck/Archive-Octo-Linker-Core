@@ -9,18 +9,16 @@ describe('require.coffee', function() {
   this.timeout(4000);
 
   before(function(done) {
-    this.$ = this.result = null;
-
-    helper('require.coffee', function(_jquery, _result) {
-      this.$ = _jquery;
+    helper('require.coffee', function(err, _result) {
+      if (err) {
+        return done(err);
+      }
       this.result = _result.require;
       done();
     }.bind(this));
   });
 
   it('found dependencies', function() {
-    // TODO Evaluate why this doesn't work
-    // result.should.have.length(2);
     this.result.length.should.equal(2);
   });
 
@@ -29,10 +27,8 @@ describe('require.coffee', function() {
       name: 'path'
     });
 
-    item.link.should.equal('http://iojs.org/api/path.html');
-
-    item.el.attr('href').should.equal('http://iojs.org/api/path.html');
-    item.el.hasClass('tooltipped').should.be.false;
+    item.el.data('type').should.equal('npm');
+    item.el.data('value').should.equal('path');
   });
 
   it('https://github.com/lodash/lodash', function() {
@@ -40,9 +36,7 @@ describe('require.coffee', function() {
       name: 'lodash'
     });
 
-    item.link.should.equal('https://github.com/lodash/lodash');
-
-    item.el.attr('href').should.equal('https://github.com/lodash/lodash');
-    item.el.hasClass('tooltipped').should.be.false;
+    item.el.data('type').should.equal('npm');
+    item.el.data('value').should.equal('lodash');
   });
 });

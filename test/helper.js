@@ -7,7 +7,7 @@ var env = require('jsdom').env;
 var core = require('..');
 
 module.exports = function(file, url, done) {
-  var $, content, baseUrl, filePath;
+  var content, baseUrl, filePath;
   baseUrl = 'https://github.com/github-linker/core/';
 
   if (typeof url === 'function') {
@@ -29,11 +29,7 @@ module.exports = function(file, url, done) {
     if (err) {
       return done(err);
     }
-    $ = require('jquery')(window);
-
-    if (process.env.TEST_ENV !== 'remote') {
-      window.document.location.href = url;
-    }
+    global.$ = require('jquery')(window);
 
     if (process.env.TEST_ENV !== 'remote') {
       window.document.location.href = url;
@@ -45,11 +41,6 @@ module.exports = function(file, url, done) {
       version: '4.0.0'
     };
 
-    core(window, options, function(err, result) {
-      if (err) {
-        throw err;
-      }
-      done($, result);
-    });
+    core(window, options, done);
   });
 };

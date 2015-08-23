@@ -10,14 +10,10 @@ describe('spyInject', function() {
   before(function(done) {
     this.$ = this.result = null;
 
-    helper('bower.json', function(_jquery, _result) {
-      this.$ = _jquery;
-      this.result = _result;
-      done();
-    }.bind(this));
+    helper('bower.json', done);
   });
 
   it('dom element is present', function() {
-    this.$('#js-repo-pjax-container').length.should.equal(1);
+    $('#js-repo-pjax-container').length.should.equal(1);
   });
 });

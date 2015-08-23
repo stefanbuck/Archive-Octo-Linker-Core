@@ -9,18 +9,16 @@ describe('composer.json', function() {
   this.timeout(4000);
 
   before(function(done) {
-    this.$ = this.result = null;
-
-    helper('composer.json', function(_jquery, _result) {
-      this.$ = _jquery;
+    helper('composer.json', function(err, _result) {
+      if (err) {
+        return done(err);
+      }
       this.result = _result.manifest;
       done();
     }.bind(this));
   });
 
   it('found dependencies', function() {
-    // TODO Evaluate why this doesn't work
-    // this.result.should.have.length(7);
     this.result.length.should.equal(7);
   });
 
@@ -33,7 +31,7 @@ describe('composer.json', function() {
   });
 
   it('check link replacement', function() {
-    this.$('a.github-linker').length.should.equal(4);
+    $('.github-linker').length.should.equal(7);
   });
 
   describe('require', function() {
@@ -43,8 +41,8 @@ describe('composer.json', function() {
         name: 'php'
       });
 
-      (item.link === '').should.equal(true);
-      item.el.hasClass('tooltipped').should.be.true;
+      item.el.data('type').should.equal('composer');
+      item.el.data('value').should.equal('php');
     });
 
     it('link laravel/framework', function() {
@@ -52,11 +50,8 @@ describe('composer.json', function() {
         name: 'laravel/framework'
       });
 
-      (item.link === null).should.equal(false);
-      item.link.should.equal('https://github.com/laravel/framework');
-
-      item.el.attr('href').should.equal('https://github.com/laravel/framework');
-      item.el.hasClass('tooltipped').should.be.false;
+      item.el.data('type').should.equal('composer');
+      item.el.data('value').should.equal('laravel/framework');
     });
 
     it('link unknown-package-name', function() {
@@ -64,8 +59,8 @@ describe('composer.json', function() {
         name: 'unknown-package-name'
       });
 
-      (item.link === '').should.equal(true);
-      item.el.hasClass('tooltipped').should.be.true;
+      item.el.data('type').should.equal('composer');
+      item.el.data('value').should.equal('unknown-package-name');
     });
   });
 
@@ -76,11 +71,8 @@ describe('composer.json', function() {
         name: 'phpunit/phpunit'
       });
 
-      (item.link === null).should.equal(false);
-      item.link.should.equal('https://github.com/sebastianbergmann/phpunit');
-
-      item.el.attr('href').should.equal('https://github.com/sebastianbergmann/phpunit');
-      item.el.hasClass('tooltipped').should.be.false;
+      item.el.data('type').should.equal('composer');
+      item.el.data('value').should.equal('phpunit/phpunit');
     });
 
     it('link doctrine/dbal', function() {
@@ -88,11 +80,8 @@ describe('composer.json', function() {
         name: 'doctrine/dbal'
       });
 
-      (item.link === null).should.equal(false);
-      item.link.should.equal('https://github.com/doctrine/dbal');
-
-      item.el.attr('href').should.equal('https://github.com/doctrine/dbal');
-      item.el.hasClass('tooltipped').should.be.false;
+      item.el.data('type').should.equal('composer');
+      item.el.data('value').should.equal('doctrine/dbal');
     });
   });
 
@@ -103,18 +92,15 @@ describe('composer.json', function() {
         name: 'ext-openssl'
       });
 
-      (item.link === '').should.equal(true);
-      item.el.hasClass('tooltipped').should.be.true;
+      item.el.data('type').should.equal('composer');
+      item.el.data('value').should.equal('ext-openssl');
     });
 
     it('doctrine/dbal', function() {
       var item = this.result[this.result.length - 1];
 
-      (item.link === null).should.equal(false);
-      item.link.should.equal('https://github.com/doctrine/dbal');
-
-      item.el.attr('href').should.equal('https://github.com/doctrine/dbal');
-      item.el.hasClass('tooltipped').should.be.false;
+      item.el.data('type').should.equal('composer');
+      item.el.data('value').should.equal('doctrine/dbal');
     });
   });
 });
