@@ -1,5 +1,10 @@
+### This repository will be merged with [chrome-extension ](https://github.com/github-linker/chrome-extension) repository soon! 
+
+So please, **open new issues only** [there](https://github.com/github-linker/chrome-extension/issues)! Thank you.
+
 # GitHub-Linker Core
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-url]][daviddm-image] [![Coverage Status][coveralls-image]][coveralls-url]
+
 
 This browserify friendly npm module contains everything what the GitHub-Linker needs to work. Currently the core is only used by the GitHub-Linker [Chrome Extension](https://github.com/github-linker/github-linker/chrome-extension). It would be possible to create other GitHub-Linker extensions for another browser as well. But this is currently out of scope. By the way, contributes are welcome. Get in touch with me!
 
