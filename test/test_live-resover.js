@@ -3,9 +3,11 @@
 require('should');
 var _ = require('lodash');
 var helper = require('./helper');
+var sinon = require('sinon');
 
 describe('live-resolver.js', function() {
   this.timeout(4000);
+  var openStub;
 
   before(function(done) {
     helper('require.js', function(err, _result) {
@@ -13,9 +15,14 @@ describe('live-resolver.js', function() {
         return done(err);
       }
       this.result = _result.require;
-      global.location = {};
+      openStub = sinon.stub();
+      global.open = openStub;
       done();
     }.bind(this));
+  });
+
+  afterEach(function() {
+    openStub.reset();
   });
 
   it('https://nodejs.org/api/path.html', function() {
@@ -29,7 +36,7 @@ describe('live-resolver.js', function() {
     });
 
     $(item.el).click();
-    global.location.href.should.equal('https://nodejs.org/api/path.html');
+    openStub.args[0][0].should.equal('https://nodejs.org/api/path.html');
   });
 
   it('https://www.npmjs.org/package/lodash', function() {
@@ -43,7 +50,7 @@ describe('live-resolver.js', function() {
     });
 
     item.el.click();
-    global.location.href.should.equal('https://www.npmjs.org/package/lodash');
+    openStub.args[0][0].should.equal('https://www.npmjs.org/package/lodash');
   });
 
   it('https://github.com/foo/lodash', function() {
@@ -59,7 +66,7 @@ describe('live-resolver.js', function() {
     });
 
     item.el.click();
-    global.location.href.should.equal('https://github.com/foo/lodash');
+    openStub.args[0][0].should.equal('https://github.com/foo/lodash');
   });
 
 });

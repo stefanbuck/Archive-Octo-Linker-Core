@@ -1,7 +1,7 @@
 {
   "name": "github-linker-core",
   "description": "The GitHub Linker core",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "homepage": "https://github.com/github-linker/core",
   "bugs": "https://github.com/github-linker/core/issues",
   "license": "MIT",
@@ -35,9 +35,10 @@
     "gulp-mocha": "^1.1.0",
     "gulp-plumber": "^0.6.5",
     "gulp-util": "^3.0.1",
-    "jsdom": "^1.0.2",
+    "jsdom": "^1.5.0",
     "jshint-stylish": "^0.4.0",
-    "should": "^4.0.4"
+    "should": "^4.0.4",
+    "sinon": "^1.16.1"
   },
   "scripts": {
     "test": "npm run test-local && npm run test-remote && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
