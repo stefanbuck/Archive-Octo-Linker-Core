@@ -1,7 +1,7 @@
 {
   "name": "github-linker-core",
   "description": "The GitHub Linker core",
-  "version": "1.9.2",
+  "version": "1.9.3",
   "homepage": "https://github.com/github-linker/core",
   "bugs": "https://github.com/github-linker/core/issues",
   "license": "MIT",
