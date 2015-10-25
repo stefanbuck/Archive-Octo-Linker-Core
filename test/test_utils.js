@@ -62,6 +62,10 @@ describe('util', function() {
     it('"lodash\'', function() {
       utils.stripQuotes({text: function(){return '"lodash\'';}}).should.equal('lodash');
     });
+
+    it(' lodash ', function() {
+      utils.stripQuotes({text: function(){return ' lodash ';}}).should.equal('lodash');
+    });
   });
 
   // TODO implement test for
