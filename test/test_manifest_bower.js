@@ -3,7 +3,7 @@
 require('should');
 var _ = require('lodash');
 var helper = require('./helper');
-// var registries = require('github-linker-cache');
+// var registries = require('octo-linker-cache');
 
 describe('bower.json', function() {
 
@@ -32,7 +32,7 @@ describe('bower.json', function() {
   });
 
   it('check link replacement', function() {
-    $('.github-linker').length.should.equal(9);
+    $('.octo-linker').length.should.equal(9);
   });
 
   it('link https://github.com/lodash/lodash', function() {
@@ -81,6 +81,6 @@ describe('bower.json', function() {
   });
 
   it('entry file', function() {
-    $('.github-linker[href="index.js"]').length.should.equal(1);
+    $('.octo-linker[href="index.js"]').length.should.equal(1);
   });
 });

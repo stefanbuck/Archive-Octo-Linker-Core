@@ -1,12 +1,12 @@
-### This repository will be merged with [chrome-extension ](https://github.com/github-linker/chrome-extension) repository soon! 
+### This repository will be merged with [chrome-extension ](https://github.com/octo-linker/chrome-extension) repository soon!
 
-So please, **open new issues only** [there](https://github.com/github-linker/chrome-extension/issues)! Thank you.
+So please, **open new issues only** [there](https://github.com/octo-linker/chrome-extension/issues)! Thank you.
 
-# GitHub-Linker Core
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-url]][daviddm-image] [![Coverage Status][coveralls-image]][coveralls-url]
+# Octo-Linker Core
+[![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-url]][daviddm-image] [![Coverage Status][coveralls-image]][coveralls-url]
 
 
-This browserify friendly npm module contains everything what the GitHub-Linker needs to work. Currently the core is only used by the GitHub-Linker [Chrome Extension](https://github.com/github-linker/github-linker/chrome-extension). It would be possible to create other GitHub-Linker extensions for another browser as well. But this is currently out of scope. By the way, contributes are welcome. Get in touch with me!
+This browserify friendly npm module contains everything what the Octo-Linker needs to work. Currently the core is only used by the Octo-Linker [Chrome Extension](https://github.com/octo-linker/chrome-extension). It would be possible to create other Octo-Linker extensions for another browser as well. But this is currently out of scope. By the way, contributes are welcome. Get in touch with me!
 
 ## Features
 
@@ -56,12 +56,12 @@ Also relative require statements.
 
 
 ```javascript
-var core = require('github-linker-core');
+var core = require('octo-linker-core');
 var $ = require('jquery');
 
 var options = {
   showUpdateNotification: true,
-  changelog: 'https://github.com/github-linker/chrome-extension/releases',
+  changelog: 'https://github.com/octo-linker/chrome-extension/releases',
   version: '1.0.0'
 };
 
@@ -82,11 +82,9 @@ Copyright (c) 2015 Stefan Buck. Licensed under the MIT license.
 
 
 
-[npm-url]: https://npmjs.org/package/github-linker-core
-[npm-image]: https://badge.fury.io/js/github-linker-core.svg
-[travis-url]: https://travis-ci.org/github-linker/core
-[travis-image]: https://travis-ci.org/github-linker/core.svg?branch=master
-[daviddm-url]: https://david-dm.org/github-linker/core.svg?theme=shields.io
-[daviddm-image]: https://david-dm.org/github-linker/core
-[coveralls-url]: https://coveralls.io/r/github-linker/core
-[coveralls-image]: https://coveralls.io/repos/github-linker/core/badge.png
+[travis-url]: https://travis-ci.org/octo-linker/core
+[travis-image]: https://travis-ci.org/octo-linker/core.svg?branch=master
+[daviddm-url]: https://david-dm.org/octo-linker/core.svg?theme=shields.io
+[daviddm-image]: https://david-dm.org/octo-linker/core
+[coveralls-url]: https://coveralls.io/r/octo-linker/core
+[coveralls-image]: https://coveralls.io/repos/octo-linker/core/badge.png

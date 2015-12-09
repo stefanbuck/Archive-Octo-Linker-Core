@@ -1,9 +1,9 @@
 {
-  "name": "github-linker-core",
+  "name": "octo-linker-core",
   "description": "The GitHub Linker core",
   "version": "1.9.3",
-  "homepage": "https://github.com/github-linker/core",
-  "bugs": "https://github.com/github-linker/core/issues",
+  "homepage": "https://github.com/octo-linker/core",
+  "bugs": "https://github.com/octo-linker/core/issues",
   "license": "MIT",
   "main": "index.js",
   "author": {
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/github-linker/core"
+    "url": "https://github.com/octo-linker/core"
   },
   "keywords": [],
   "dependencies": {
     "async": "^1.4.2",
     "builtins": "^1.0.2",
     "github-injection": "^0.1.0",
-    "github-linker-resolver": "^0.2.0",
+    "octo-linker-resolver": "octo-linker/resolver",
     "jquery": "^2.1.1",
     "lodash": "2.4.1"
   },

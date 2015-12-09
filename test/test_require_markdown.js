@@ -23,7 +23,7 @@ describe('require_markdown.md', function() {
   });
 
   it('check link replacement', function() {
-    $('.github-linker').length.should.equal(1);
+    $('.octo-linker').length.should.equal(1);
   });
 
   it('https://github.com/lodash/lodash', function() {

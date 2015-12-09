@@ -23,7 +23,7 @@ describe('require.js', function() {
   });
 
   it('check link replacement', function() {
-    $('.github-linker').length.should.equal(23);
+    $('.octo-linker').length.should.equal(23);
   });
 
   it('http://iojs.org/api/path.html', function() {

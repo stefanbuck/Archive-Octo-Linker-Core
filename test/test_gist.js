@@ -22,14 +22,14 @@ describe.skip('gist', function() {
     this.result.length.should.equal(1);
   });
 
-  it('https://github.com/github-linker/core', function() {
+  it('https://github.com/octo-linker/core', function() {
     var item = _.findWhere(this.result, {
-      name: 'github-linker-core'
+      name: 'octo-linker-core'
     });
 
-    item.link.should.equal('https://github.com/github-linker/core');
+    item.link.should.equal('https://github.com/octo-linker/core');
 
-    item.el.attr('href').should.equal('https://github.com/github-linker/core');
+    item.el.attr('href').should.equal('https://github.com/octo-linker/core');
     item.el.hasClass('tooltipped').should.be.false;
   });
 });

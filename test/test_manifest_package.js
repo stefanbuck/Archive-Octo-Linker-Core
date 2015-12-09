@@ -31,7 +31,7 @@ describe('package.json', function() {
   });
 
   it('check link replacement', function() {
-    $('.github-linker').length.should.equal(14);
+    $('.octo-linker').length.should.equal(14);
   });
 
   it('link https://github.com/lodash/lodash', function() {
@@ -89,15 +89,15 @@ describe('package.json', function() {
   });
 
   it('link directories', function() {
-    $('.github-linker[href="./main"]').length.should.equal(1);
-    $('.github-linker[href="./bin"]').length.should.equal(1);
+    $('.octo-linker[href="./main"]').length.should.equal(1);
+    $('.octo-linker[href="./bin"]').length.should.equal(1);
   });
 
   it('entry file', function() {
-    $('.github-linker[href="index.js"]').length.should.equal(1);
+    $('.octo-linker[href="index.js"]').length.should.equal(1);
   });
 
   it('bin file', function() {
-    $('.github-linker[href="./index.js"]').length.should.equal(1);
+    $('.octo-linker[href="./index.js"]').length.should.equal(1);
   });
 });

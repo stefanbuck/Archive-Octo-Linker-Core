@@ -8,7 +8,7 @@ var core = require('..');
 
 module.exports = function(file, url, done) {
   var content, baseUrl, filePath;
-  baseUrl = 'https://github.com/github-linker/core/';
+  baseUrl = 'https://github.com/octo-linker/core/';
 
   if (typeof url === 'function') {
     done = url;
@@ -37,7 +37,7 @@ module.exports = function(file, url, done) {
 
     var options = {
       showUpdateNotification: false,
-      changelog: 'https://github.com/github-linker/chrome-extension/releases',
+      changelog: 'https://github.com/octo-linker/chrome-extension/releases',
       version: '4.0.0'
     };
 

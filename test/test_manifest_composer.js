@@ -31,7 +31,7 @@ describe('composer.json', function() {
   });
 
   it('check link replacement', function() {
-    $('.github-linker').length.should.equal(7);
+    $('.octo-linker').length.should.equal(7);
   });
 
   describe('require', function() {
